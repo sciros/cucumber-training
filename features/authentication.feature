@@ -4,18 +4,11 @@ Feature: authentication
   So that visitors have a personalized user experience and so that I can track visitor behavior
 
   Scenario: user goes directly to the login page and authenticates with valid credentials
-    Given I go to the login page
-    When I enter "user1" into the username
-    And I enter "P4ssw0rd" into the password
-    And I press the login button
-    Then I am logged in
+    Given I log in
     And I am on the account page
-    When I click the logout link
+    When I log out
     Then I am on the login page
 
   Scenario: user tries to authenticate with invalid credentials
-    Given I go to the login page
-    When I enter "user1" into the username
-    And I enter "bad password" into the password
-    And I press the login button
+    Given I try to authenticate with invalid credentials
     Then I see "bad credentials"
