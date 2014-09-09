@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+gem 'cucumber','1.3.7'
 gem 'rspec','2.14.1'
 gem 'page-object', '1.0.2'
 gem 'i18n', '0.6.9'
