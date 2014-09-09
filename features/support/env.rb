@@ -6,7 +6,7 @@ this_file_location = File.dirname(__FILE__)
 config_file_path = this_file_location + '/../../config.yml' #directly in project directory
 config = YAML.load_file(config_file_path)
 
-BASE_URL = config['testApplicationUrl']
+$base_url = config['testApplicationUrl']
 
 Before do
   @browser = browser
