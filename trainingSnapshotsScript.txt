@@ -1,0 +1,55 @@
+note: Alt+Enter will make light bulb appear
+
+Starting with feature-less Cucumber project…
+  1) create authentication feature and basic login scenario
+  2) create step definitions without page classes, corresponding to steps 1-to-1
+Training Snapshot 1 -- working login happy path scenario WITHOUT page classes
+  1) add another scenario that exercises a failed login with invalid credentials
+Training Snapshot 2 -- TrainingSnapshot1 WITH bad login scenario
+  1) reword the steps to read more like business vernacular
+  2) nest steps together to allow for this
+Training Snapshot 3 -- TrainingSnapshot2 with nested steps and business wording
+  1) discard the nested steps (should be aware of the option, though)
+  2) combine the concrete steps as nesting created an extra layer of indirection
+Training Snapshot 4 -- TrainingSnapshot3 with nesting removed and steps combined
+  1) give a reason for abstracting away page details into class definitions
+  2) introduce the Page Object gem
+  3) make appropriate changes to env.rb
+  4) write page classes for login and account pages
+  5) rewrite step definitions to use the page classes
+Training Snapshot 5 -- TrainingSnapshot4 with page classes
+  1) talk about the need to reduce repetition (in case things change etc)
+  2) rewrite the log in step to take credentials as arguments
+  3) have the two log in steps delegate to the parameterized one
+Training Snapshot 6 -- TrainingSnapshot5 with parameterized log in step
+  1) talk about moving some code into page objects to make them more self-contained
+Training Snapshot 7 -- TrainingSnapshot6 with new method in Login page
+
+NOTE NOTE NOTE -- there was a step definition that changed in TrainingSnapshot7
+now we check the Account page rather than Login page for text being 'Welcome'
+
+
+  1) add a scenario that exercises common navigation (scenario outline)
+  2) take advantage of inheritance in Ruby classes to write a common page class
+
+MySQL/ActiveRecord not playing well together -- sometimes super slow and it's not clear why
+
+Training Snapshot 8 -- TrainingSnapshot7 with visiting movie page (scenario outline, inheritance)
+  1) talk about common setup for scenarios (e.g. user starts unauthenticated) and multiple ways to deal with them -- hooks with tags, background, within step and definition
+  2) go with background, leaving hooks with tags for later
+Training Snapshot 9 -- TrainingSnapshot8 with Background in authentication feature
+  1) bring up the usefulness of powerful regular expressions in step definitions
+  2) rewrite some step expressions to be more freeform
+Training Snapshot 10 -- TrainingSnapshot9 with a regular expression allowing options
+  1) write purchase tickets scenario, making one step pass at a time
+  2) re-organize steps by function or feature to avoid having one big dumping ground
+Training Snapshot 11 -- TrainingSnapshot10 with purchase tickets scenario (massive)
+  1) talk about the need to have steps be repeatable and not leave things behind
+  2) introduce the concept of data management and ActiveRecord
+Training Snapshot 12 — TrainingSnapshot11 with movie list verification scenario
+  1) introduce hooks
+  2) take people through cleaning up ticket purchasing from the database
+Training Snapshot 13 - TrainingSnapshot12 with hook to clean up ticket purchase
+  1) talk about profiles to drive different kinds of test runs (dev, ci, prod, etc)
+  2) introduce cucumber.yml file that defines profiles
+Training Snapshot 14 - TrainingSnapshot13 with profiles
