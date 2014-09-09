@@ -10,5 +10,5 @@ Feature: authentication
     Then I am on the login page
 
   Scenario: user tries to authenticate with invalid credentials
-    Given I try to authenticate with invalid credentials
+    Given I try to log in with invalid credentials
     Then I see "bad credentials"

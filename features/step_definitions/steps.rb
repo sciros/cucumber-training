@@ -1,30 +1,8 @@
 Given /^I log in$/ do
-  steps %q{
-    Given I go to the login page
-     When I enter "user1" into the username
-      And I enter "P4ssw0rd" into the password
-      And I press the login button
-     Then I am logged in
-  }
-end
-
-Given /^I go to the login page$/ do
   @browser.goto(BASE_URL + '/login')
-end
-
-When /^I enter "([^"]*)" into the username$/ do |username|
-  @browser.text_field(:id => 'login').set username
-end
-
-When /^I enter "([^"]*)" into the password$/ do |password|
-  @browser.text_field(:id => 'password').set password
-end
-
-When /^I press the login button$/ do
+  @browser.text_field(:id => 'login').set 'user1'
+  @browser.text_field(:id => 'password').set 'P4ssw0rd'
   @browser.button(:name => 'commit').click
-end
-
-Then /^I am logged in$/ do
   Watir::Wait.until(5) {
     @browser.text.include? 'Welcome'
   }
@@ -37,11 +15,7 @@ When /^I am on the account page$/ do
   }
 end
 
-Given /^I log out$/ do
-  step 'I click the logout link'
-end
-
-When /^I click the logout link$/ do
+When /^I log out$/ do
   @browser.link(:text => /Logout/).click
 end
 
@@ -52,13 +26,11 @@ Then /^I am on the login page$/ do
   }
 end
 
-Given /^I try to authenticate with invalid credentials$/ do
-  steps %q{
-   Given I go to the login page
-    When I enter "user1" into the username
-    And I enter "bad password" into the password
-    And I press the login button
-  }
+Given /^I try to log in with invalid credentials$/ do
+  @browser.goto(BASE_URL + '/login')
+  @browser.text_field(:id => 'login').set 'user1'
+  @browser.text_field(:id => 'password').set 'bad password'
+  @browser.button(:name => 'commit').click
 end
 
 Then /^I see "([^"]*)"$/ do |text|
