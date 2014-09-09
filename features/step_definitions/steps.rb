@@ -1,8 +1,14 @@
-Given /^I log in$/ do
+Given /^I log in with "(.+)", "(.+)"$/ do |username, password|
   visit Login do |login_page|
-    login_page.username = 'user1'
-    login_page.password = 'P4ssw0rd'
+    login_page.username = username
+    login_page.password = password
     login_page.login
+  end
+end
+
+Given /^I log in$/ do
+  step 'I log in with "user1", "P4ssw0rd"'
+  on Login do|login_page|
     login_page.wait_until(5) do
       login_page.text.include? 'Welcome'
     end
@@ -23,18 +29,15 @@ end
 
 Then /^I am on the login page$/ do
   on Login do |login_page|
-    login_page.wait_until(5) do
-      login_page.login? #checks element's existence
-    end
+    login_page.login_element.when_present(5)
+    #login_page.wait_until(5) do
+    #  login_page.login?
+    #end
   end
 end
 
 Given /^I try to log in with invalid credentials$/ do
-  visit Login do |login_page|
-    login_page.username = 'user1'
-    login_page.password = 'bad password'
-    login_page.login
-  end
+  step 'I log in with "user1", "bad password"'
 end
 
 Then /^I see "([^"]*)"$/ do |text|
