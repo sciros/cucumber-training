@@ -6,4 +6,10 @@ class Login
   text_field(:username, :id => 'login')
   text_field(:password, :id => 'password')
   button(:login, :name => 'commit')
+
+  def log_in_with(username, password)
+    self.username = username
+    self.password = password
+    login
+  end
 end
