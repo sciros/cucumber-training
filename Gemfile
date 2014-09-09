@@ -1,0 +1,7 @@
+source 'http://rubygems.org'
+gem 'rspec','2.14.1'
+gem 'page-object', '1.0.2'
+gem 'i18n', '0.6.9'
+gem 'titleize', '1.2.1'
+gem 'activerecord', '4.0.2'
+gem 'mysql2', '0.3.11'
