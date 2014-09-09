@@ -36,3 +36,14 @@ Then /^I see "([^"]*)"$/ do |text|
     @browser.text.include? text
   }
 end
+
+Given /^I can visit the Movies page from the (.+) page$/ do |page_name|
+  visit get_page_class(page_name) do |page|
+    page.movies #click on link
+    on Movies do |movies_page|
+      movies_page.wait_until(5) do
+        movies_page.movie_list? #verify that we are on the movies page
+      end
+    end
+  end
+end
