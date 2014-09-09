@@ -1,5 +1,5 @@
 Given /^I log in$/ do
-  @browser.goto(BASE_URL + '/login')
+  @browser.goto($base_url + '/login')
   @browser.text_field(:id => 'login').set 'user1'
   @browser.text_field(:id => 'password').set 'P4ssw0rd'
   @browser.button(:name => 'commit').click
@@ -9,7 +9,7 @@ Given /^I log in$/ do
 end
 
 When /^I am on the account page$/ do
-  @browser.url.should == BASE_URL + '/account'
+  @browser.url.should == $base_url + '/account'
   Watir::Wait.until(5) {
     @browser.text.include? 'Name:'
   }
@@ -27,7 +27,7 @@ Then /^I am on the login page$/ do
 end
 
 Given /^I try to log in with invalid credentials$/ do
-  @browser.goto(BASE_URL + '/login')
+  @browser.goto($base_url + '/login')
   @browser.text_field(:id => 'login').set 'user1'
   @browser.text_field(:id => 'password').set 'bad password'
   @browser.button(:name => 'commit').click
