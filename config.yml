@@ -1,2 +1,2 @@
-testApplicationUrl: http://10.11.5.30:3000
-databaseHost: 10.11.5.30
+testApplicationUrl: http://dsharkovmac.local:3000
+databaseHost: dsharkovmac.local
