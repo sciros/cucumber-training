@@ -12,3 +12,10 @@ Feature: authentication
     And I am on the account page
     When I click the logout link
     Then I am on the login page
+
+  Scenario: user tries to authenticate with invalid credentials
+    Given I go to the login page
+    When I enter "user1" into the username
+    And I enter "bad password" into the password
+    And I press the login button
+    Then I see "bad credentials"

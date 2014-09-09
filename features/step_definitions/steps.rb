@@ -37,3 +37,9 @@ Then /^I am on the login page$/ do
     login_button.exists?
   }
 end
+
+Then /^I see "([^"]*)"$/ do |text|
+  Watir::Wait.until(5) {
+      @browser.text.include? text
+  }
+end
