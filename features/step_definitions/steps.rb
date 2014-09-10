@@ -40,8 +40,10 @@ Given /^I try to log in with invalid credentials$/ do
   step 'I log in with "user1", "bad password"'
 end
 
-Then /^I see "([^"]*)"$/ do |text|
-  Watir::Wait.until(5) {
-    @browser.text.include? text
-  }
+Then /^I see an authentication error message$/ do
+  on Login do |login_page|
+    login_page.wait_until(5) do
+      login_page.text.include? 'bad credentials'
+    end
+  end
 end
