@@ -1,9 +1,15 @@
 Given /^I am not (?:logged in|authenticated)$/ do
   visit Account do |account_page|
     if account_page.logout?
-      step 'I log out'
+      account_page.logout
+      on Login do |login_page|
+        login_page.wait_until(5) do
+          login_page.text.include? 'successful'
+        end
+      end
     end
   end
+
 end
 
 Given /^I log in$/ do
