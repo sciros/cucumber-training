@@ -20,19 +20,17 @@ When /^I log out$/ do
 end
 
 Then /^I am on the login page$/ do
-  on Login do |login_page|
-    login_page.wait_until(5) do
-      login_page.login?
-    end
-  end
+  on(Login).login_element.when_present(5)
 end
 
 Given /^I try to log in with invalid credentials$/ do
   visit(Login).log_in_with('user1','bad password')
 end
 
-Then /^I see "([^"]*)"$/ do |text|
-  Watir::Wait.until(5) {
-    @browser.text.include? text
-  }
+Then /^I see an authentication error message$/ do
+  on Login do |login_page|
+    login_page.wait_until(5) do
+      login_page.text.include? 'bad credentials'
+    end
+  end
 end
