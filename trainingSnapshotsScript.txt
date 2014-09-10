@@ -46,3 +46,6 @@ Training Snapshot 13 - TrainingSnapshot12 with hook to clean up ticket purchase
   1) talk about profiles to drive different kinds of test runs (dev, ci, prod, etc)
   2) introduce cucumber.yml file that defines profiles
 Training Snapshot 14 - TrainingSnapshot13 with profiles
+  1) (if time) talk about cucumber transforms, including table transforms
+  2) do a table transform as part of ticket purchasing (filling out cc form)
+Training Snapshot 15 - TrainingSnapshot14 with table transform
