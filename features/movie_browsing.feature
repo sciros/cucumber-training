@@ -10,3 +10,7 @@ Feature: movie browsing
     | page_name |
     | login     |
     | theaters  |
+
+  Scenario: User sees a list of movies on the movies page
+    Given I visit the Movies page
+    Then I can see a list of all movies now playing

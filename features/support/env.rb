@@ -9,6 +9,7 @@ config_file_path = this_file_location + '/../../config.yml' #directly in project
 config = YAML.load_file(config_file_path)
 
 $base_url = config['testApplicationUrl']
+$database_host = config['databaseHost']
 
 # adding PageObject and PageFactory to Cucumber's World
 World(PageObject::PageFactory)

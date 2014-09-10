@@ -23,3 +23,17 @@ When(/^I select a showtime from the list of available showtimes$/) do
     on(BuyTickets).includes_text 'Log in to buy'
   end
 end
+
+Given(/^I visit the [Mm]ovies page$/) do
+  visit(Movies).movie_list_element.when_present(5)
+end
+
+Then(/^I can see a list of all movies now playing$/) do
+  on Movies do |movies_page|
+    movie_listing = movies_page.movie_list #get text from div
+    Movie.all.each do |movie|
+      #TODO or do expect(movie.listing.include? movie.name) to take advantage of rspec
+      fail("#{movie.name} is missing") unless movie_listing.include? movie.name
+    end
+  end
+end
