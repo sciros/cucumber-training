@@ -1,4 +1,4 @@
-Given /^I am not logged in$/ do
+Given /^I am not (?:logged in|authenticated)$/ do
   visit Account do |account_page|
     if account_page.logout?
       step 'I log out'
