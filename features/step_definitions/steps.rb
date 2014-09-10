@@ -28,12 +28,12 @@ When /^I log out$/ do
 end
 
 Then /^I am on the login page$/ do
-  on Login do |login_page|
-    login_page.login_element.when_present(5)
+  on(Login).login_element.when_present(5)
+  #on Login do |login_page|
     #login_page.wait_until(5) do
     #  login_page.login?
     #end
-  end
+  #end
 end
 
 Given /^I try to log in with invalid credentials$/ do
