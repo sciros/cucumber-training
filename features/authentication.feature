@@ -11,4 +11,4 @@ Feature: authentication
 
   Scenario: user tries to authenticate with invalid credentials
     Given I try to log in with invalid credentials
-    Then I see "bad credentials"
+    Then I see an authentication error message

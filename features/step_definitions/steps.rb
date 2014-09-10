@@ -33,8 +33,8 @@ Given /^I try to log in with invalid credentials$/ do
   @browser.button(:name => 'commit').click
 end
 
-Then /^I see "([^"]*)"$/ do |text|
+Then /^I see an authentication error message$/ do
   Watir::Wait.until(5) {
-    @browser.text.include? text
+    @browser.text.include? 'bad credentials'
   }
 end
