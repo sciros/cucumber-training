@@ -9,7 +9,6 @@ Given /^I am not logged in$/ do
       end
     end
   end
-
 end
 
 Given /^I log in$/ do
