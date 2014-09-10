@@ -1,27 +1,15 @@
 Given /^I am on the account page$/ do
-  on Account do |account_page|
-    account_page.wait_until(5) do
-      account_page.text.include? 'Name:'
-    end
-  end
+  on(Account).includes_text 'Name:'
 end
 
 Given /^I am on the login page$/ do
-  on Login do |login_page|
-    login_page.wait_until(5) do
-      login_page.login?
-    end
-  end
+  on(Login).login_element.when_present(5)
 end
 
 Given /^I can visit the Movies page from the (.+) page$/ do |page_name|
   visit get_page_class(page_name) do |page|
     page.movies #click on link
-    on Movies do |movies_page|
-      movies_page.wait_until(5) do
-        movies_page.movies? #verify that we are on the movies page
-      end
-    end
+    on(Movies).movies_element.when_present(5) #verify we are on the movies page
   end
 end
 
@@ -32,10 +20,6 @@ end
 When(/^I select a showtime from the list of available showtimes$/) do
   on Showtimes do |showtimes_page|
     showtimes_page.select_first_showtime
-    on BuyTickets do |buy_tickets_page|
-      buy_tickets_page.wait_until(5) do
-        buy_tickets_page.text.include? 'Log in to buy'
-      end
-    end
+    on(BuyTickets).includes_text 'Log in to buy'
   end
 end

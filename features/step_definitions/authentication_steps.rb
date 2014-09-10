@@ -2,22 +2,14 @@ Given /^I am not (?:logged in|authenticated)$/ do
   visit Account do |account_page|
     if account_page.logout?
       account_page.logout
-      on Login do |login_page|
-        login_page.wait_until(5) do
-          login_page.text.include? 'successful'
-        end
-      end
+      on(Login).includes_text 'successful'
     end
   end
 end
 
 Given /^I log in$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
-  on Account do|account_page|
-    account_page.wait_until(5) do
-      account_page.text.include? 'Welcome'
-    end
-  end
+  on(Account).includes_text 'Welcome'
 end
 
 Given /^I log out$/ do
@@ -26,4 +18,8 @@ end
 
 Given /^I try to log in with invalid credentials$/ do
   visit(Login).log_in_with('user1','bad password')
+end
+
+Then /^I see an authentication error message$/ do
+  on(Login).includes_text 'bad credentials'
 end

@@ -7,17 +7,9 @@ When(/^I submit my payment information$/) do
 end
 
 Then(/^I get a purchase confirmation$/) do
-  on BuyTickets do |page|
-    page.wait_until(5) do
-      page.text.include? 'You got tix!'
-    end
-  end
+  on(BuyTickets).includes_text 'You got tix!'
 end
 
 When(/^I can see my purchase on the account page$/) do
-  visit Account do |page|
-    page.wait_until(5) do
-      page.text.include? '3 to'
-    end
-  end
+  visit(Account).includes_text '3 to'
 end
