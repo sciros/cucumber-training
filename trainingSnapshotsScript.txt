@@ -21,19 +21,12 @@ Training Snapshot 5 -- TrainingSnapshot4 with page classes
   1) talk about the need to reduce repetition (in case things change etc)
   2) rewrite the log in step to take credentials as arguments
   3) have the two log in steps delegate to the parameterized one
+  4) bonus - reword "I am on the login page" step definition to be one-liner
 Training Snapshot 6 -- TrainingSnapshot5 with parameterized log in step
   1) talk about moving some code into page objects to make them more self-contained
 Training Snapshot 7 -- TrainingSnapshot6 with new method in Login page
-
-NOTE NOTE NOTE -- there was a step definition that changed in TrainingSnapshot7
-now we check the Account page rather than Login page for text being 'Welcome'
-
-
   1) add a scenario that exercises common navigation (scenario outline)
   2) take advantage of inheritance in Ruby classes to write a common page class
-
-MySQL/ActiveRecord not playing well together -- sometimes super slow and it's not clear why
-
 Training Snapshot 8 -- TrainingSnapshot7 with visiting movie page (scenario outline, inheritance)
   1) talk about common setup for scenarios (e.g. user starts unauthenticated) and multiple ways to deal with them -- hooks with tags, background, within step and definition
   2) go with background, leaving hooks with tags for later
@@ -53,3 +46,6 @@ Training Snapshot 13 - TrainingSnapshot12 with hook to clean up ticket purchase
   1) talk about profiles to drive different kinds of test runs (dev, ci, prod, etc)
   2) introduce cucumber.yml file that defines profiles
 Training Snapshot 14 - TrainingSnapshot13 with profiles
+  1) (if time) talk about cucumber transforms, including table transforms
+  2) do a table transform as part of ticket purchasing (filling out cc form)
+Training Snapshot 15 - TrainingSnapshot14 with table transform
