@@ -1,3 +1,11 @@
+Given /^I am not logged in$/ do
+  visit Account do |account_page|
+    if account_page.logout?
+      step 'I log out'
+    end
+  end
+end
+
 Given /^I log in$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
   on Account do|account_page|
