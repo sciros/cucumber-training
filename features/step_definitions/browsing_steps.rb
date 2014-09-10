@@ -9,7 +9,7 @@ end
 Given /^I can visit the Movies page from the (.+) page$/ do |page_name|
   visit get_page_class(page_name) do |page|
     page.movies #click on link
-    on(Movies).movies_element.when_present(5) #verify we are on the movies page
+    on(Movies).movie_list_element.when_present(5) #verify we are on the movies page
   end
 end
 
