@@ -47,5 +47,7 @@ Training Snapshot 13 - TrainingSnapshot12 with hook to clean up ticket purchase
   2) introduce cucumber.yml file that defines profiles
 Training Snapshot 14 - TrainingSnapshot13 with profiles
   1) (if time) talk about cucumber transforms, including table transforms
-  2) do a table transform as part of ticket purchasing (filling out cc form)
+  2) do a table transform as part of viewing movie details
 Training Snapshot 15 - TrainingSnapshot14 with table transform
+
+Assessment or Practical: new user registration
