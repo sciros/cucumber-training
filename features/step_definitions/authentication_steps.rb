@@ -8,7 +8,7 @@ Given /^I am not (?:logged in|authenticated)$/ do
 end
 
 Given /^I log in$/ do
-  visit(Login).log_in_with('user1','P4ssw0rd')
+  visit(Login).log_in_with($username,'P4ssw0rd')
   on(Account).includes_text 'Welcome'
 end
 
@@ -17,7 +17,7 @@ Given /^I log out$/ do
 end
 
 Given /^I try to log in with invalid credentials$/ do
-  visit(Login).log_in_with('user1','bad password')
+  visit(Login).log_in_with($username,'bad password')
 end
 
 Then /^I see an authentication error message$/ do

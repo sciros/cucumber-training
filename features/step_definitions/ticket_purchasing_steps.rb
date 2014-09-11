@@ -1,5 +1,5 @@
 When(/^I enter the number of tickets I want to purchase$/) do
-  on(BuyTickets).enter_number_of_tickets(3)
+  on(BuyTickets).enter_number_of_tickets($number_of_tickets)
 end
 
 When(/^I submit my payment information$/) do
@@ -11,5 +11,5 @@ Then(/^I get a purchase confirmation$/) do
 end
 
 When(/^I can see my purchase on the account page$/) do
-  visit(Account).includes_text '3 to'
+  visit(Account).includes_text "#{$number_of_tickets} to"
 end
