@@ -14,3 +14,11 @@ Feature: movie browsing
   Scenario: User sees a list of movies on the movies page
     Given I visit the Movies page
     Then I can see a list of all movies now playing
+
+  Scenario: Display movie details
+    Given I view a movie's details
+     Then I see the following:
+    | theater list |
+    | synopsis     |
+    | rating       |
+    | running time |

@@ -37,3 +37,13 @@ Then(/^I can see a list of all movies now playing$/) do
     end
   end
 end
+
+Given("I view a movie's details") do #why bother with regex when it's an exact string
+  visit(Movies).view_first_movie_details
+end
+
+Given("I see the following:") do |table|
+  table.raw.transpose.first.each { |detail|
+    on(Movies).verify_presence(detail)
+  }
+end
