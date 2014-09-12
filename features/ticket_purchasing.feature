@@ -1,3 +1,4 @@
+@ticketPurchasing
 Feature: ticket purchasing
   As a Movietix visitor
   I want to be able to purchase tickets for movie showtimes
