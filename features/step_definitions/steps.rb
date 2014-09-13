@@ -21,6 +21,7 @@ Then /^I am logged in$/ do
 end
 
 When /^I am on the account page$/ do
+  #TODO use rspec expectations instead of should from now on
   @browser.url.should == $base_url + '/account'
   Watir::Wait.until(5) {
     @browser.text.include? 'Name:'
