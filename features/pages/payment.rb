@@ -19,6 +19,7 @@ class Payment < BasePage
   button(:complete_purchase_button, :name => 'commit')
 
   def enter_payment_information
+    #TODO first line would just be 'start_payment_entry'
     self.confirm_purchase_link
     self.name = 'Justin Hawkins'
     self.credit_card_number = '1111222233334444'
