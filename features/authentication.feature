@@ -6,6 +6,9 @@ Feature: authentication
   Background:
     Given I am not logged in
 
+  #FIXME scenario does not fail in this case anymore -- what changed?
+  #TODO
+  #TODO also the theaters queries still lock up all the freaking time what is the deal
   Scenario: user goes directly to the login page and authenticates with valid credentials
     Given I log in
     Then I am on the account page

@@ -1,9 +1,11 @@
 Given /^I am not logged in$/ do
   visit Account do |account_page|
+    #TODO the question mark might not work correctly... not mentioned as a generated method for link
     if account_page.logout?
       account_page.logout
       on Login do |login_page|
         login_page.wait_until(5) do
+          #TODO should read 'Logout successful!' because there is also a Login successful
           login_page.text.include? 'successful'
         end
       end
