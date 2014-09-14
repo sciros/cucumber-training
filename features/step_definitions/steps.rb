@@ -1,3 +1,5 @@
+#TODO skip all this it's pointless since we're throwing it away immediately (the extracting and calling steps)
+
 Given /^I log in with "(.+)", "(.+)"$/ do |username, password|
   visit Login do |login_page|
     login_page.username = username
