@@ -1,6 +1,7 @@
 require 'titleize'
 
 module StepHelper
+  #TODO apparently this is unnecessary... visit 'Login' works just like visit Login
   def get_page_class(page_name)
     page_name = convert_to_constant_name(page_name)
     Object.const_get(page_name)
