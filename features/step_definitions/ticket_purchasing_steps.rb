@@ -7,6 +7,7 @@ When(/^I submit my payment information$/) do
 end
 
 Then(/^I get a purchase confirmation$/) do
+  #TODO on(PurchaseConfirmation).... (use a new page class)
   on(BuyTickets).includes_text 'You got tix!'
 end
 
