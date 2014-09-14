@@ -2,6 +2,7 @@ require_relative 'base_page'
 
 class Payment < BasePage
   # rename from confirm_puchase_button to confirm_purhase_link
+  #TODO rename to start_payment_entry because that's what it's for
   link(:confirm_purchase_link, :text => 'Purchase Tix')
 
   text_field(:name, :id => 'name')
