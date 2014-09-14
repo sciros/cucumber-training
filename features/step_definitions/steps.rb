@@ -1,7 +1,7 @@
 Given /^I am not logged in$/ do
   visit Account do |account_page|
     #TODO the question mark might not work correctly... not mentioned as a generated method for link
-    if account_page.logout?
+    if account_page.logout? #TODO work but is not documented WTF
       account_page.logout
       on Login do |login_page|
         login_page.wait_until(5) do
