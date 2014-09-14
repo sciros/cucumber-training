@@ -20,6 +20,9 @@ end
 When(/^I select a showtime from the list of available showtimes$/) do
   on Showtimes do |showtimes_page|
     showtimes_page.select_first_showtime
+    #TODO should be ShowtimeInfo or it's hard to make sense of...
+    # then log in
+    # then end up on the BuyTickets page
     on(BuyTickets).includes_text 'Log in to buy'
   end
 end
