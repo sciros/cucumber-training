@@ -3,7 +3,7 @@ Given /^I go to the login page$/ do
 end
 
 When /^I enter "([^"]*)" into the username$/ do |username|
-  @browser.text_field(:id => 'login').set username
+  @browser.text_field(:id => 'username').set username
 end
 
 When /^I enter "([^"]*)" into the password$/ do |password|
@@ -20,21 +20,16 @@ Then /^I am logged in$/ do
   }
 end
 
-When /^I am on the account page$/ do
-  #TODO use rspec expectations instead of should from now on
-  @browser.url.should == $base_url + '/account'
+Then /^I am not logged in$/ do
+  expect(@browser.text).not_to include('Welcome')
+end
+
+When /^I am on the movies page$/ do
   Watir::Wait.until(5) {
-    @browser.text.include? 'Name:'
+    @browser.text.include? 'Now Playing'
   }
 end
 
 When /^I click the logout link$/ do
   @browser.link(:text => /Logout/).click
-end
-
-Then /^I am on the login page$/ do
-  login_button = @browser.button(:name => 'commit')
-  Watir::Wait.until(5) {
-    login_button.exists?
-  }
 end
