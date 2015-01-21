@@ -9,13 +9,16 @@ Feature: authentication
     And I enter "P4ssw0rd" into the password
     And I press the login button
     Then I am logged in
-    And I am on the account page
+    And I am on the movies page
     When I click the logout link
-    Then I am on the login page
+    Then I am on the movies page
+    And I am not logged in
 
   Scenario: user tries to authenticate with invalid credentials
     Given I go to the login page
     When I enter "user1" into the username
     And I enter "bad password" into the password
     And I press the login button
-    Then I see "bad credentials"
+    Then I see "Sorry"
+    And I am on the login page
+    And I am not logged in

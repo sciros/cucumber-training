@@ -3,7 +3,7 @@ Given /^I go to the login page$/ do
 end
 
 When /^I enter "([^"]*)" into the username$/ do |username|
-  @browser.text_field(:id => 'login').set username
+  @browser.text_field(:id => 'username').set username
 end
 
 When /^I enter "([^"]*)" into the password$/ do |password|
@@ -20,10 +20,13 @@ Then /^I am logged in$/ do
   }
 end
 
-When /^I am on the account page$/ do
-  @browser.url.should == $base_url + '/account'
+Then /^I am not logged in$/ do
+  expect(@browser.text).not_to include('Welcome')
+end
+
+When /^I am on the movies page$/ do
   Watir::Wait.until(5) {
-    @browser.text.include? 'Name:'
+    @browser.text.include? 'Now Playing'
   }
 end
 
@@ -32,14 +35,13 @@ When /^I click the logout link$/ do
 end
 
 Then /^I am on the login page$/ do
-  login_button = @browser.button(:name => 'commit')
   Watir::Wait.until(5) {
-    login_button.exists?
+    @browser.text.include? 'Log In'
   }
 end
 
 Then /^I see "([^"]*)"$/ do |text|
   Watir::Wait.until(5) {
-      @browser.text.include? text
+    @browser.text.include? text
   }
 end
