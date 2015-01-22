@@ -1,24 +1,34 @@
-Given /^I log in$/ do
+Given /^I try to log in$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'P4ssw0rd'
     login_page.login
-    login_page.wait_until(5) do
-      login_page.text.include? 'Welcome'
+  end
+end
+
+When /^I am on the movies page$/ do
+  on Movies do |movies_page|
+    movies_page.wait_until(5) do
+      movies_page.text.include? 'Now Playing'
     end
   end
 end
 
-When /^I am on the account page$/ do
-  on Account do |account_page|
-    account_page.wait_until(5) do
-      account_page.text.include? 'Name:'
+When /^I am logged in$/ do
+  on Movies do |movies_page|
+    movies_page.wait_until(5) do
+      movies_page.text.include? 'Welcome'
     end
   end
 end
 
-When /^I log out$/ do
-  on(Account).logout
+When /^I try to log out$/ do
+  on(Movies).logout
+end
+
+When /^I am not logged in$/ do
+  #no need for page object here
+  expect(@browser.text).not_to include('Welcome')
 end
 
 Then /^I am on the login page$/ do
@@ -40,7 +50,7 @@ end
 Then /^I see an authentication error message$/ do
   on Login do |login_page|
     login_page.wait_until(5) do
-      login_page.text.include? 'bad credentials'
+      login_page.text.include? 'Sorry'
     end
   end
 end

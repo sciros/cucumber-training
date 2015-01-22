@@ -1,4 +1,4 @@
-class Account
+class Movies
   include PageObject
 
   link(:logout, :text => /Logout/)
