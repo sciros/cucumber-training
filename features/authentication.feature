@@ -5,7 +5,8 @@ Feature: authentication
 
   Scenario: user goes directly to the login page and authenticates with valid credentials
      When I try to log in
-     Then I am logged in
+     Then I am on the movies page
+      And I am logged in
      When I try to log out
      Then I am not logged in
 

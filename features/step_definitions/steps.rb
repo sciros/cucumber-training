@@ -4,7 +4,7 @@ Given /^I try to log in$/ do
      When I enter "user1" into the username
       And I enter "P4ssw0rd" into the password
       And I press the login button
-     Then I am logged in
+     Then I am on the movies page
   }
 end
 
