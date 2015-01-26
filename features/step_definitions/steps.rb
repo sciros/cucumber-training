@@ -1,34 +1,21 @@
-Given /^I try to log in$/ do
+Given /^I can log in with valid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'P4ssw0rd'
     login_page.login
   end
-end
-
-When /^I am on the movies page$/ do
   on Movies do |movies_page|
     movies_page.wait_until(5) do
-      movies_page.text.include? 'Now Playing'
+      movies_page.text.include? 'Now Playing' and movies_page.text.include? 'Welcome'
     end
   end
 end
 
-When /^I am logged in$/ do
+When /^I can log out$/ do
   on Movies do |movies_page|
-    movies_page.wait_until(5) do
-      movies_page.text.include? 'Welcome'
-    end
+    movies_page.logout
+    expect(movies_page.text).not_to include('Welcome')
   end
-end
-
-When /^I try to log out$/ do
-  on(Movies).logout
-end
-
-When /^I am not logged in$/ do
-  #no need for page object here
-  expect(@browser.text).not_to include('Welcome')
 end
 
 Then /^I am on the login page$/ do
