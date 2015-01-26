@@ -28,8 +28,7 @@ end
 
 Given /^I can visit the Movies page from any page$/ do
   %w(Theaters Login).each do |page_name|
-    page_class = Object.const_get(page_name)
-    visit page_class do |page|
+    visit page_name do |page|
       page.view_movies
       on(Movies).movie_list_element.when_present(10) #verify we are on the movies page
     end
