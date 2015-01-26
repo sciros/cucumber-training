@@ -1,7 +1,6 @@
-#TODO should maybe move the "include? text" in here now
-
 class BasePage
   include PageObject
 
-  link(:movies, :text => 'Movies')
+  link(:logout, :text => /Logout/)
+  link(:view_movies, :text => 'Movies')
 end
