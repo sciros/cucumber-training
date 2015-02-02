@@ -19,10 +19,8 @@ Given /^I can log in with valid credentials$/ do
 end
 
 When /^I can log out$/ do
-  on Movies do |movies_page|
-    movies_page.logout
-    expect(movies_page.text).not_to include('Welcome')
-  end
+  @current_page.logout
+  expect(@current_page.text).not_to include('Welcome')
 end
 
 Given /^I try to log in with invalid credentials$/ do
