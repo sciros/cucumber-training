@@ -1,5 +1,6 @@
 class BasePage
   include PageObject
 
-  link(:movies, :text => 'Movies')
+  link(:logout, :text => /Logout/)
+  link(:view_movies, :text => 'Movies')
 end

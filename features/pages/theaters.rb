@@ -1,5 +1,5 @@
 require_relative 'base_page'
 
 class Theaters < BasePage
-  page_url($base_url+'/theaters')
+  page_url($base_url+'/theater/listAll')
 end
