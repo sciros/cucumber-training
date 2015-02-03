@@ -1,19 +1,25 @@
 Given /^I am not (?:logged in|authenticated)$/ do
-  visit Account do |account_page|
-    if account_page.logout?
-      account_page.logout
-      on(Login).includes_text 'successful'
+  visit Movies do |movies_page|
+    if movies_page.logout?
+      movies_page.logout
+      movies_page.should_contain_text 'Log In'
     end
   end
 end
 
 Given /^I log in$/ do
   visit(Login).log_in_with($username,'P4ssw0rd')
-  on(Account).includes_text 'Welcome'
+  #this is page-agnostic which makes sense here
+  @current_page.should_contain_text 'Welcome'
 end
 
-Given /^I log out$/ do
-  on(Account).logout
+Given /^I can log in with valid credentials$/ do
+  step 'I log in'
+end
+
+When /^I can log out$/ do
+  @current_page.logout
+  expect(@browser.text).not_to include('Welcome')
 end
 
 Given /^I try to log in with invalid credentials$/ do
@@ -21,5 +27,5 @@ Given /^I try to log in with invalid credentials$/ do
 end
 
 Then /^I see an authentication error message$/ do
-  on(Login).includes_text 'bad credentials'
+  on(Login).should_contain_text 'Sorry'
 end

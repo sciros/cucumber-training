@@ -1,4 +1,5 @@
 require_relative 'base_page'
 
-class Account < BasePage
+class ShowtimeInfo < BasePage
+
 end
