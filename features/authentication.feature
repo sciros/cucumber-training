@@ -9,7 +9,6 @@ Feature: authentication
     And I enter "P4ssw0rd" into the password
     And I press the login button
     Then I am logged in
-    And I am on the movies page
+    And I am on the account page
     When I click the logout link
-    Then I am on the movies page
     And I am not logged in
