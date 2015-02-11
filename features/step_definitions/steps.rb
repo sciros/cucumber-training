@@ -6,24 +6,24 @@ Given /^I try to log in$/ do
   end
 end
 
-When /^I am on the movies page$/ do
-  on Movies do |movies_page|
-    movies_page.wait_until(5) do
-      movies_page.text.include? 'Now Playing'
+When /^I am on the account page$/ do
+  on Account do |account_page|
+    account_page.wait_until(5) do
+      account_page.text.include? 'This is your account'
     end
   end
 end
 
 When /^I am logged in$/ do
-  on Movies do |movies_page|
-    movies_page.wait_until(5) do
-      movies_page.text.include? 'Welcome'
+  on Account do |account_page|
+    account_page.wait_until(5, 'Welcome text never appeared') do
+      account_page.text.include? 'Welcome'
     end
   end
 end
 
 When /^I try to log out$/ do
-  on(Movies).logout
+  on(Account).logout
 end
 
 When /^I am not logged in$/ do
