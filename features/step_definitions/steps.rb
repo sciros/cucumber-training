@@ -26,6 +26,7 @@ end
 
 Then /^I am on the account page$/ do
   Watir::Wait.until(5) {
+    #good candidate for nested step call of 'I see "This is your account"'
     @browser.text.include? 'This is your account'
   }
 end
@@ -35,9 +36,7 @@ When /^I click the logout link$/ do
 end
 
 Then /^I am on the login page$/ do
-  Watir::Wait.until(5) {
-    @browser.text.include? 'Log In'
-  }
+  @browser.title.include? 'Login'
 end
 
 Then /^I see "([^"]*)"$/ do |text|
