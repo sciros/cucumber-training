@@ -20,3 +20,4 @@ Feature: authentication
     And I press the login button
     Then I see "Sorry"
     And I am on the login page
+    And I am not logged in
