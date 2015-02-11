@@ -1,10 +1,7 @@
 Given /^I am not logged in$/ do
-  visit Movies do |movies_page|
-    if movies_page.logout?
-      movies_page.logout
-      movies_page.wait_until(5) {
-        movies_page.text.include? 'Log In'
-      }
+  visit Account do |account_page|
+    if account_page.logout?
+      account_page.logout
     end
   end
 end
