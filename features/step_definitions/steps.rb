@@ -45,3 +45,12 @@ Given /^I can visit the Movies page from any page$/ do
     end
   end
 end
+
+Given /^I can visit the Theaters page from any page$/ do
+  %w(Movies Login).each do |page_name|
+    visit page_name do |page|
+      page.view_theaters
+      on(Theaters).theater_list_element.when_present(10) #verify we are on the theaters page
+    end
+  end
+end
