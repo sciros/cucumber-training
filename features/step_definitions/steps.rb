@@ -11,18 +11,17 @@ end
 
 Given /^I can log in with valid credentials$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
-  on Movies do |movies_page|
-    movies_page.wait_until(5) do
-      movies_page.text.include? 'Now Playing' and movies_page.text.include? 'Welcome'
+  on Account do |account_page|
+    account_page.wait_until(5) do
+      account_page.text.include? 'Welcome' and
+      account_page.text.include? 'This is your account'
     end
   end
 end
 
 When /^I can log out$/ do
-  on Movies do |movies_page|
-    movies_page.logout
-    expect(movies_page.text).not_to include('Welcome')
-  end
+  on(Account).logout
+  expect(@browser.text).not_to include('Welcome')
 end
 
 Given /^I try to log in with invalid credentials$/ do
