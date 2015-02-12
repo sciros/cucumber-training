@@ -1,8 +1,7 @@
 Given /^I am not (?:logged in|authenticated)$/ do
-  visit Movies do |movies_page|
-    if movies_page.logout?
-      movies_page.logout
-      movies_page.should_contain_text 'Log In'
+  visit Account do |account_page|
+    if account_page.logout?
+      account_page.logout
     end
   end
 end
@@ -30,6 +29,15 @@ Given /^I can visit the Movies page from any page$/ do
     visit page_name do |page|
       page.view_movies
       on(Movies).movie_list_element.when_present(10) #verify we are on the movies page
+    end
+  end
+end
+
+Given /^I can visit the Theaters page from any page$/ do
+  %w(Movies Login).each do |page_name|
+    visit page_name do |page|
+      page.view_theaters
+      on(Theaters).theater_list_element.when_present(10) #verify we are on the movies page
     end
   end
 end
