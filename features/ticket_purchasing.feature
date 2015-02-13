@@ -17,3 +17,6 @@ Feature: ticket purchasing
     # and I purchase some tickets
     # then I get a purchase confirmation
     # and I can see my purchase on the account page
+
+  #TODO make movietix be too slow to display theater info (wait and then display block)
+  #exercise - ticket purchasing through theaters page
