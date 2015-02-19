@@ -1,4 +1,6 @@
 After('@ticketPurchasing') do
+  #TODO use constants like USERNAME and BASE_URL
+  #TODO use instance variable @number_of_tickets - that's better
   user = User.where(:username => $username).first
   purchases_from_db = Purchase.where(:user_id => user, :number_of_tickets => $number_of_tickets)
   purchases_from_db.each do |purchase|
