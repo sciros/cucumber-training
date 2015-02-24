@@ -1,3 +1,4 @@
+@exercise
 Feature: theater browsing
   As a Movietix visitor
   I want to be able to browse through the theaters in town

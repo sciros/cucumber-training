@@ -34,6 +34,7 @@ Given /^I can visit the Movies page from any page$/ do
   end
 end
 
+#exercise
 Given /^I can visit the Theaters page from any page$/ do
   %w(Movies Login).each do |page_name|
     visit page_name do |page|
