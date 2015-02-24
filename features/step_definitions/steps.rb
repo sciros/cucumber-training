@@ -16,7 +16,7 @@ Then /^I am not logged in$/ do
   expect(@browser.text).not_to include('Welcome')
 end
 
-When /^I am on the movies page$/ do
+When /^I am on the account page$/ do
   Watir::Wait.until(5) {
     @browser.text.include? 'Now Playing'
   }
