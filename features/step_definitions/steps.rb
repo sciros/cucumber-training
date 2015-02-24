@@ -18,7 +18,7 @@ end
 
 When /^I am on the account page$/ do
   Watir::Wait.until(5) {
-    @browser.text.include? 'Now Playing'
+    @browser.text.include? 'This is your account'
   }
 end
 
