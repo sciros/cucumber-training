@@ -1,11 +1,11 @@
 After('@ticketPurchasing') do
-  user = User.where(:username => $username).first
-  purchases_from_db = Purchase.where(:user_id => user, :number_of_tickets => $number_of_tickets)
+  user = User.where(:username => USERNAME).first
+  purchases_from_db = Purchase.where(:user_id => user, :number_of_tickets => @number_of_tickets)
   purchases_from_db.each do |purchase|
     # restore tickets available to showtime, reduce tickets sold
     showtime = Showtime.find(purchase.showtime_id)
-    showtime.seats_available += $number_of_tickets
-    showtime.tickets_sold -= $number_of_tickets
+    showtime.seats_available += @number_of_tickets
+    showtime.tickets_sold -= @number_of_tickets
     showtime.save
 
     purchase.destroy

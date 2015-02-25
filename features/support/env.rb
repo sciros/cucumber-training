@@ -10,8 +10,7 @@ config = YAML.load_file(config_file_path)
 
 $base_url = config['testApplicationUrl']
 $database_host = config['databaseHost']
-$username = 'user1' # could also move these into config.yml
-$number_of_tickets = 3
+USERNAME = 'user1' # could also move these into config.yml
 
 # adding PageObject and PageFactory to Cucumber's World
 World(PageObject::PageFactory)
