@@ -4,4 +4,4 @@ Feature: movie browsing
   So that I know what movies I am able to go see
 
   Scenario: User can visit the movies page from any page
-    Given I can visit the Movies page from any page
+    * I can visit the Movies page from any page

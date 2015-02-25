@@ -1,8 +1,7 @@
 Given /^I am not (?:logged in|authenticated)$/ do
-  visit Movies do |movies_page|
-    if movies_page.logout?
-      movies_page.logout
-      movies_page.should_contain_text 'Log In'
+  visit Account do |account_page|
+    if account_page.logout?
+      account_page.logout
     end
   end
 end
