@@ -7,9 +7,46 @@ Given /^I can visit the Movies page from any page$/ do
   end
 end
 
+#exercise
+Given /^I can visit the Movies page from the (.+) page$/ do |page_name|
+  visit page_name do |page|
+    page.view_movies
+    on(Movies).movie_list_element.when_present(10)
+  end
+end
+
+#exercise
+Given /^I can visit the Movies page from any of these pages:$/ do |table|
+  table.transpose.raw.first.each do |page_name|
+    visit page_name do |page|
+      page.view_movies
+      on(Movies).movie_list_element.when_present(10)
+    end
+  end
+end
+
+Given /^I can visit the Theaters page from any page$/ do
+  %w(Movies Login).each do |page_name|
+    visit page_name do |page|
+      page.view_theaters
+      on(Theaters).theater_list_element.when_present(10) #verify we are on the theaters page
+    end
+  end
+end
+
 When(/^I select a showtime to go to$/) do
+  # view first showtime on movies page
+  # select first showtime on the movie showtimes page
+  # verify that we are on the showtime info page
   visit(Movies).view_first_movie_showtimes
-  on(Showtimes).select_first_showtime
+  on(MovieShowtimes).select_first_showtime
+  on(ShowtimeInfo).should_contain_text 'Showtime info'
+end
+
+#exercise
+When(/^I select a showtime to go to through the theaters list$/) do
+  visit(Theaters).view_first_theater_showtimes
+  on(TheaterShowtimes).select_first_showtime
   on(ShowtimeInfo).should_contain_text 'Showtime info'
 end
 
@@ -25,14 +62,4 @@ Then(/^I can see a list of all movies now playing$/) do
       fail("#{movie.title} is missing") unless movie_listing.include? movie.title
     end
   end
-end
-
-Given("I view a movie's details") do #why bother with regex when it's an exact string
-  visit(Movies).view_first_movie_details
-end
-
-Given("I see the following:") do |table|
-  table.raw.transpose.first.each { |detail|
-    on(Movies).verify_presence(detail)
-  }
 end

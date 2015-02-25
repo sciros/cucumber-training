@@ -8,12 +8,19 @@ Feature: movie browsing
     Then I can see a list of all movies now playing
 
   Scenario: User can visit the movies page from any page
-    Given I can visit the Movies page from any page
+    * I can visit the Movies page from any page
 
-  Scenario: Display movie details
-    Given I view a movie's details
-     Then I see the following:
-    | theater list |
-    | synopsis     |
-    | rating       |
-    | running time |
+  @exercise
+  Scenario Outline: User can visit the movies page from any page (outline)
+    * I can visit the Movies page from the <page_name> page
+
+  Examples:
+    |page_name|
+    |Theaters |
+    |Login    |
+
+  @exercise
+  Scenario: User can visit the movies page from any page (transform)
+    * I can visit the Movies page from any of these pages:
+    |Theaters|
+    |Login   |
