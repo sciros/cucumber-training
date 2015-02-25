@@ -8,4 +8,4 @@ Feature: movie browsing
     Then I can see a list of all movies now playing
 
   Scenario: User can visit the movies page from any page
-    Given I can visit the Movies page from any page
+    * I can visit the Movies page from any page

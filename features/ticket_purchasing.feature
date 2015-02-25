@@ -11,9 +11,11 @@ Feature: ticket purchasing
      Then I get a purchase confirmation
       And I can see my purchase on the account page
 
-  #exercise - basic ticket purchasing flow if authenticated
-    # given I am logged in
-    # when I select a showtime to go to
-    # and I purchase some tickets
-    # then I get a purchase confirmation
-    # and I can see my purchase on the account page
+  @exercise
+  Scenario: ticket purchasing through theaters page
+    Given I am not logged in
+     When I select a showtime to go to through the theaters list
+      And I log in
+      And I purchase some tickets
+     Then I get a purchase confirmation
+      And I can see my purchase on the account page
