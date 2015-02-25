@@ -63,3 +63,12 @@ Then(/^I can see a list of all movies now playing$/) do
     end
   end
 end
+
+#exercise
+Given /^I see a list of movies ordered alphabetically$/ do
+  on Movies do |movies_page|
+    # confirm that all the movies are in alphabetical order
+    titles = movies_page.all_movie_titles
+    expect(titles).to eq(titles.sort)
+  end
+end

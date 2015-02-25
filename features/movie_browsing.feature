@@ -24,3 +24,8 @@ Feature: movie browsing
     * I can visit the Movies page from any of these pages:
     |Theaters|
     |Login   |
+
+  @exercise
+  Scenario: Movies are alphabetically ordered
+    Given I visit the movies page
+    Then I see a list of movies ordered alphabetically
