@@ -12,6 +12,17 @@ After('@ticketPurchasing') do
   end
 end
 
+#exercise
+After('@registration') do
+  @current_page.logout
+
+  new_user = User.find_by(username: @new_username)
+
+  UserRole.delete_all(user_id: new_user)
+
+  new_user.destroy
+end
+
 After do |scenario|
   if scenario.failed?
     Dir::mkdir('screenshots') if not File.directory?('screenshots')

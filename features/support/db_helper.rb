@@ -2,7 +2,7 @@ require 'active_record'
 
 ActiveRecord::Base.establish_connection(
     :adapter => 'mysql2',
-    :host => $database_host,
+    :host => DATABASE_HOST,
     :username => 'tester',
     :password => 'P4ssw0rd',
     :database => 'movietix'
@@ -26,6 +26,25 @@ end
 
 class User < ActiveRecord::Base
   self.table_name = :user
+
+  #exercise
+  has_many :user_roles
+  has_many :roles, through: :user_roles
+end
+
+#exercise
+class Role < ActiveRecord::Base
+  self.table_name = :role
+  has_many :user_roles
+  has_many :users, through: :user_roles
+end
+
+#exercise
+class UserRole <ActiveRecord::Base
+  self.table_name = :user_role
+
+  belongs_to :role
+  belongs_to :user
 end
 
 # can also do Movie.all

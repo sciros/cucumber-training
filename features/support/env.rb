@@ -8,8 +8,8 @@ this_file_location = File.dirname(__FILE__)
 config_file_path = this_file_location + '/../../config.yml' #directly in project directory
 config = YAML.load_file(config_file_path)
 
-$base_url = config['testApplicationUrl']
-$database_host = config['databaseHost']
+BASE_URL = config['testApplicationUrl']
+DATABASE_HOST = config['databaseHost']
 USERNAME = 'user1' # could also move these into config.yml
 
 # adding PageObject and PageFactory to Cucumber's World

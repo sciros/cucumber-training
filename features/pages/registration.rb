@@ -1,15 +1,16 @@
+#exercise
 require_relative 'base_page'
 
-class Login < BasePage
-  page_url(BASE_URL + '/login')
+class Registration < BasePage
+  page_url(BASE_URL + '/user/create')
 
   text_field(:username, :id => 'username')
   text_field(:password, :id => 'password')
-  button(:login, :name => 'commit')
+  button(:register, :name => 'commit')
 
-  def log_in_with(username, password)
+  def register_with(username, password)
     self.username = username
     self.password = password
-    login
+    register
   end
 end
