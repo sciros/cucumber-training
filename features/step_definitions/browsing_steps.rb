@@ -58,8 +58,8 @@ Then(/^I can see a list of all movies now playing$/) do
   on Movies do |movies_page|
     movie_listing = movies_page.movie_list #get text from div
     Movie.all.each do |movie|
-      #TODO or do expect(movie.listing.include? movie.name) to take advantage of rspec
-      fail("#{movie.title} is missing") unless movie_listing.include? movie.title
+      #OR fail("#{movie.title} is missing") unless movie_listing.include? movie.title
+      expect(movie_listing).to include(movie.title)
     end
   end
 end
