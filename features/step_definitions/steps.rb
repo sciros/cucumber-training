@@ -8,7 +8,7 @@ Given /^I try to log in$/ do
 end
 
 Given /^I go to the login page$/ do
-  @browser.goto($base_url + '/login')
+  @browser.goto(BASE_URL + '/login')
 end
 
 When /^I enter "([^"]*)" into the username$/ do |username|
@@ -33,9 +33,10 @@ Then /^I am not logged in$/ do
   expect(@browser.text).not_to include('Welcome')
 end
 
-When /^I am on the movies page$/ do
+Then /^I am on the account page$/ do
   Watir::Wait.until(5) {
-    @browser.text.include? 'Now Playing'
+    #good candidate for nested step call of 'I see "This is your account"'
+    @browser.text.include? 'This is your account'
   }
 end
 
@@ -48,9 +49,7 @@ When /^I click the logout link$/ do
 end
 
 Then /^I am on the login page$/ do
-  Watir::Wait.until(5) {
-    @browser.text.include? 'Log In'
-  }
+  @browser.title.include? 'Login'
 end
 
 Given /^I try to log in with invalid credentials$/ do
