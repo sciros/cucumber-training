@@ -28,7 +28,7 @@ When /^I try to log out$/ do
 end
 
 Then /^I am on the login page$/ do
-  @browser.title.include? 'Login'
+  expect(@browser.title).to include('Login')
 end
 
 Given /^I try to log in with invalid credentials$/ do
