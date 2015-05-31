@@ -1,7 +1,7 @@
 require_relative 'base_page'
 
 class Theaters < BasePage
-  page_url($base_url+'/theater/listAll')
+  page_url(BASE_URL + '/theater/listAll')
 
   div(:theater_list, :id => 'theaters_accordion')
 end
