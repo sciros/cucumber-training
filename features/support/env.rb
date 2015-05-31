@@ -10,7 +10,7 @@ config = YAML.load_file(config_file_path)
 
 BASE_URL = config['testApplicationUrl']
 
-# adding PageObject and PageFactory to Cucumber's World
+# adding PageFactory to Cucumber's World
 World(PageObject::PageFactory)
 
 Before do
