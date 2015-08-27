@@ -1,5 +1,5 @@
 Given /^I go to the login page$/ do
-  @browser.goto($base_url + '/login')
+  @browser.goto(BASE_URL + '/login')
 end
 
 When /^I enter "([^"]*)" into the username$/ do |username|
