@@ -1,5 +1,8 @@
 require 'active_record'
 
+#option
+#ActiveRecord::Base.pluralize_table_names = false
+
 ActiveRecord::Base.establish_connection(
     :adapter => 'mysql2',
     :host => DATABASE_HOST,
