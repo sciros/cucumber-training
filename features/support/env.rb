@@ -12,7 +12,7 @@ BASE_URL = config['testApplicationUrl']
 DATABASE_HOST = config['databaseHost']
 USERNAME = 'user1' # could also move these into config.yml
 
-# adding PageObject and PageFactory to Cucumber's World
+# adding PageFactory to Cucumber's World
 World(PageObject::PageFactory)
 
 Before do
