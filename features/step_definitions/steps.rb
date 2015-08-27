@@ -16,11 +16,6 @@ Given /^I can log in with valid credentials$/ do
   end
 end
 
-When /^I can log out$/ do
-  on(Account).logout
-  expect(@browser.text).not_to include('Welcome')
-end
-
 Given /^I try to log in with invalid credentials$/ do
   visit(Login).log_in_with('user1','bad password')
 end
