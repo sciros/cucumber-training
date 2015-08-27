@@ -16,7 +16,7 @@ class Payment < BasePage
   button(:complete_purchase, :name => 'commit')
 
   def enter_payment_information
-    self.start_payment_entry
+    start_payment_entry
     self.name = 'Justin Hawkins'
     self.credit_card_number = '1111222233334444'
     self.month = 'October'
@@ -25,6 +25,6 @@ class Payment < BasePage
     self.city = 'Dublin'
     self.state = 'OH'
     self.zip = '43016'
-    self.complete_purchase
+    complete_purchase
   end
 end
