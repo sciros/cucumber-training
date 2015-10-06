@@ -19,4 +19,4 @@ Feature: authentication
     And I enter "bad password" into the password
     And I press the login button
     Then I see "Sorry"
-    And I am not logged in
+    And I am on the login page
