@@ -36,7 +36,7 @@ When /^I click the logout link$/ do
 end
 
 Then /^I am on the login page$/ do
-  @browser.title.include? 'Login'
+  expect(@browser.title).to include('Login')
 end
 
 Then /^I see "([^"]*)"$/ do |text|
