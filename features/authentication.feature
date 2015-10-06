@@ -11,7 +11,7 @@ Feature: authentication
     Then I am logged in
     And I am on the account page
     When I click the logout link
-    And I am not logged in
+    Then I am not logged in
 
   Scenario: user tries to authenticate with invalid credentials
     Given I go to the login page
@@ -19,3 +19,4 @@ Feature: authentication
     And I enter "bad password" into the password
     And I press the login button
     Then I see "Sorry"
+    And I am not logged in
