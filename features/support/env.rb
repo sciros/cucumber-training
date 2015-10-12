@@ -2,11 +2,11 @@ require 'watir-webdriver'
 require 'page-object'
 require 'page-object/page_factory'
 
-browser = Watir::Browser.new :firefox
+browser = Watir::Browser.new :chrome
 
-this_file_location = File.dirname(__FILE__)
+this_file_location = File.dirname __FILE__
 config_file_path = this_file_location + '/../../config.yml' #directly in project directory
-config = YAML.load_file(config_file_path)
+config = YAML.load_file config_file_path
 
 BASE_URL = config['testApplicationUrl']
 
