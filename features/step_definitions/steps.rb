@@ -8,7 +8,7 @@ end
 
 When /^I am on the account page$/ do
   on Account do |account_page|
-    account_page.wait_until(5) do
+    account_page.wait_until(5, 'Account page did not load') do
       account_page.text.include? 'This is your account'
     end
   end
@@ -16,8 +16,8 @@ end
 
 When /^I am logged in$/ do
   on Account do |account_page|
-    account_page.wait_until(5, 'Welcome text never appeared') do
-      account_page.text.include? 'Welcome'
+    account_page.wait_until(5, 'Never found logout link') do
+      account_page.logout?
     end
   end
 end
