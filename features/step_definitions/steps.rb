@@ -27,8 +27,8 @@ When /^I try to log out$/ do
 end
 
 When /^I am not logged in$/ do
-  #no need for page object here
-  expect(@browser.text).not_to include('Welcome')
+  #remove watir-webdriver @browser api and replace with page-object api
+  expect(@current_page.text).not_to include('Welcome')
 end
 
 Then /^I am on the login page$/ do
