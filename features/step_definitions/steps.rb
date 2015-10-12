@@ -1,14 +1,19 @@
-Given /^I can log in with valid credentials$/ do
+Given /^I log in with valid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'P4ssw0rd'
     login_page.login
   end
   on Account do |account_page|
-    account_page.wait_until(5, 'Account page did not load') do
+    account_page.wait_until(5, 'Logout link did not appear') do
       account_page.logout?
-      account_page.text.include? 'This is your account'
     end
+  end
+end
+
+Then /^I am on the account page$/ do
+  on Account do |account_page|
+    expect(account_page.text).to include('This is your account')
   end
 end
 
