@@ -1,20 +1,33 @@
-Given /^I can log in with valid credentials$/ do
+Given /^I log in with valid credentials$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
   on Account do |account_page|
-    account_page.wait_until(5) do
-      account_page.text.include? 'Welcome' and
-      account_page.text.include? 'This is your account'
+    account_page.wait_until(5, 'Logout link did not appear') do
+      account_page.logout?
     end
+  end
+end
+
+Then /^I am on the account page$/ do
+  on Account do |account_page|
+    expect(account_page.text).to include('This is your account')
   end
 end
 
 When /^I can log out$/ do
   on(Account).logout
-  expect(@browser.text).not_to include('Welcome')
+  expect(@current_page.text).not_to include('Welcome')
 end
 
 Given /^I try to log in with invalid credentials$/ do
   visit(Login).log_in_with('user1','bad password')
+end
+
+Then /^I am on the login page$/ do
+  on Login do |login_page|
+    login_page.wait_until(5) {
+      login_page.login?
+    }
+  end
 end
 
 Then /^I see an authentication error message$/ do
