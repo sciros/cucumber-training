@@ -8,9 +8,9 @@ end
 
 Given /^I log in with valid credentials$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
-  @current_page.wait_until(5, 'Failed to verify login') {
-    @current_page.text.include? 'Logout'
-  }
+  @current_page.wait_until(5, 'Never saw welcome message') do
+    @current_page.text.include? 'Welcome'
+  end
 end
 
 Then /^I am on the account page$/ do
