@@ -1,3 +1,15 @@
+Then /^I am on the [Aa]ccount page$/ do
+  on(Account).should_contain_text 'This is your account'
+end
+
+Then /^I am on the login page$/ do
+  on Login do |login_page|
+    login_page.wait_until(5) {
+      login_page.login?
+    }
+  end
+end
+
 Given /^I can visit the Movies page from any page$/ do
   %w(Theaters Login).each do |page_name|
     visit page_name do |page|
@@ -7,6 +19,7 @@ Given /^I can visit the Movies page from any page$/ do
   end
 end
 
+#exercise
 Given /^I can visit the Theaters page from any page$/ do
   %w(Movies Login).each do |page_name|
     visit page_name do |page|

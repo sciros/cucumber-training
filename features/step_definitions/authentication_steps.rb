@@ -12,7 +12,7 @@ Given /^I log in$/ do
   @current_page.should_contain_text 'Welcome'
 end
 
-Given /^I can log in with valid credentials$/ do
+Given /^I log in with valid credentials$/ do
   step 'I log in'
 end
 
@@ -22,4 +22,9 @@ end
 
 Then /^I see an authentication error message$/ do
   on(Login).should_contain_text 'Sorry'
+end
+
+When /^I can log out$/ do
+  on(Account).logout
+  expect(@current_page.text).not_to include('Welcome')
 end
