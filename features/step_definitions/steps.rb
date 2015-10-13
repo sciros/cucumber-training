@@ -4,9 +4,9 @@ Given /^I log in with valid credentials$/ do
     login_page.password = 'P4ssw0rd'
     login_page.login
   end
-  @current_page.wait_until(5, 'Failed to verify login') {
-    @current_page.text.include? 'Logout'
-  }
+  @current_page.wait_until(5, 'Never saw welcome message') do
+    @current_page.text.include? 'Welcome'
+  end
 end
 
 Then /^I am on the account page$/ do
