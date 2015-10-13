@@ -11,8 +11,8 @@ class Movies < BasePage
   links(:all_movie_title, :class => 'accordion_heading')
 
   def view_first_movie_showtimes
-    self.first_movie_element.click
-    self.view_movie_showtimes
+    first_movie_element.click
+    view_movie_showtimes
   end
 
   def view_first_movie_details
