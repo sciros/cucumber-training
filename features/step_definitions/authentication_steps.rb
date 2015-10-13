@@ -11,7 +11,7 @@ Given /^I log in to purchase tickets$/ do
 end
 
 Given /^I log in with valid credentials$/ do
-  visit(Login).log_in_with('user1','P4ssw0rd')
+  visit(Login).log_in_with(USERNAME,'P4ssw0rd')
   @current_page.should_contain_text 'Welcome'
 end
 
