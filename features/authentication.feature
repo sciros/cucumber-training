@@ -7,9 +7,11 @@ Feature: authentication
     Given I am not logged in
 
   Scenario: user goes directly to the login page and authenticates with valid credentials
-     Given I can log in with valid credentials
-#      Then I can log out
+     When I log in with valid credentials
+     Then I am on the account page
+      #And I can log out
 
   Scenario: user tries to authenticate with invalid credentials
     Given I try to log in with invalid credentials
-      Then I see an authentication error message
+     Then I am on the login page
+      And I see an authentication error message

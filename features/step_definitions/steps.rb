@@ -6,13 +6,34 @@ Given /^I am not (?:logged in|authenticated)$/ do
   end
 end
 
-Given /^I can log in with valid credentials$/ do
+Given /^I log in with valid credentials$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
-  @current_page.should_contain_text 'Welcome'
+  on Account do |account_page|
+    account_page.wait_until(5, 'Logout link did not appear') do
+      account_page.logout?
+    end
+  end
+end
+
+Then /^I am on the account page$/ do
+  @current_page.should_contain_text 'This is your account'
+end
+
+When /^I can log out$/ do
+  on(Account).logout
+  expect(@current_page.text).not_to include('Welcome')
 end
 
 Given /^I try to log in with invalid credentials$/ do
   visit(Login).log_in_with('user1','bad password')
+end
+
+Then /^I am on the login page$/ do
+  on Login do |login_page|
+    login_page.wait_until(5) {
+      login_page.login?
+    }
+  end
 end
 
 Then /^I see an authentication error message$/ do
