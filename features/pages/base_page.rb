@@ -1,5 +1,6 @@
 class BasePage
   include PageObject
+  include PageObject::PageFactory
 
   def should_contain_text(text, error_message="Expected text '#{text}' never appeared")
     wait_until(5, error_message) do

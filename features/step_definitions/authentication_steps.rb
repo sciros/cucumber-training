@@ -6,13 +6,17 @@ Given /^I am not (?:logged in|authenticated)$/ do
   end
 end
 
-Given /^I log in$/ do
+Given /^I log in to purchase tickets$/ do
+  on(ShowtimeInfo).log_in
+end
+
+Given /^I log in with valid credentials$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
   #this is page-agnostic which makes sense here
   @current_page.should_contain_text 'Welcome'
 end
 
-Given /^I log in with valid credentials$/ do
+Given /^I try to log in with invalid credentials$/ do
   visit(Login).log_in_with('user1','bad password')
 end
 
