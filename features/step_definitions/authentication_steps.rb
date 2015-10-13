@@ -6,14 +6,13 @@ Given /^I am not (?:logged in|authenticated)$/ do
   end
 end
 
-Given /^I log in$/ do
-  visit(Login).log_in_with('user1','P4ssw0rd')
-  #this is page-agnostic which makes sense here
-  @current_page.should_contain_text 'Welcome'
+Given /^I log in to purchase tickets$/ do
+  on(ShowtimeInfo).log_in
 end
 
-Given /^I can log in with valid credentials$/ do
-  step 'I log in'
+Given /^I log in with valid credentials$/ do
+  visit(Login).log_in_with('user1','P4ssw0rd')
+  @current_page.should_contain_text 'Welcome'
 end
 
 Given /^I try to log in with invalid credentials$/ do
@@ -22,4 +21,9 @@ end
 
 Then /^I see an authentication error message$/ do
   on(Login).should_contain_text 'Sorry'
+end
+
+When /^I can log out$/ do
+  on(Account).logout
+  expect(@current_page.text).not_to include('Welcome')
 end

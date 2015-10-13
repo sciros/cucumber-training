@@ -8,7 +8,7 @@ class Movies < BasePage
   link(:view_movie_showtimes, :id => 'movie_showtimes_1')
 
   def view_first_movie_showtimes
-    self.first_movie_element.click
-    self.view_movie_showtimes
+    first_movie_element.click
+    view_movie_showtimes
   end
 end
