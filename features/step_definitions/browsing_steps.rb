@@ -29,7 +29,7 @@ Given /^I can visit the Theaters page from any page$/ do
   end
 end
 
-When(/^I select a showtime to go to$/) do
+When(/^I select a showtime to go to through the movie list$/) do
   # view first showtime on movies page
   # select first showtime on the movie showtimes page
   # verify that we are on the showtime info page
@@ -39,7 +39,7 @@ When(/^I select a showtime to go to$/) do
 end
 
 #exercise
-When(/^I select a showtime to go to through the theaters list$/) do
+When(/^I select a showtime to go to through the theater list$/) do
   visit(Theaters).view_first_theater_showtimes
   on(TheaterShowtimes).select_first_showtime
   on(ShowtimeInfo).should_contain_text 'Showtime info'

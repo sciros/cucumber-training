@@ -13,10 +13,6 @@ Given /^I log in$/ do
 end
 
 Given /^I log in with valid credentials$/ do
-  step 'I log in'
-end
-
-Given /^I try to log in with invalid credentials$/ do
   visit(Login).log_in_with('user1','bad password')
 end
 
