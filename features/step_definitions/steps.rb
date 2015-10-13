@@ -4,11 +4,9 @@ Given /^I log in with valid credentials$/ do
     login_page.password = 'P4ssw0rd'
     login_page.login
   end
-  on Account do |account_page|
-    account_page.wait_until(5, 'Logout link did not appear') do
-      account_page.logout?
-    end
-  end
+  @current_page.wait_until(5, 'Failed to verify login') {
+    @current_page.text.include? 'Logout'
+  }
 end
 
 Then /^I am on the account page$/ do
