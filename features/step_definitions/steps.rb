@@ -16,8 +16,8 @@ end
 
 When /^I am logged in$/ do
   on Account do |account_page|
-    account_page.wait_until(5, 'Never found logout link') do
-      account_page.logout?
+    account_page.wait_until(5, 'Never saw welcome message') do
+      account_page.text.include? 'Welcome'
     end
   end
 end
