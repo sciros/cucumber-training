@@ -8,15 +8,11 @@ end
 
 Given /^I log in with valid credentials$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
-  on Account do |account_page|
-    account_page.wait_until(5, 'Logout link did not appear') do
-      account_page.logout?
-    end
-  end
+  @current_page.should_contain_text 'Logout'
 end
 
-Then /^I am on the account page$/ do
-  @current_page.should_contain_text 'This is your account'
+Then /^I am on the [Aa]ccount page$/ do
+  on(Account).should_contain_text 'This is your account'
 end
 
 When /^I can log out$/ do
