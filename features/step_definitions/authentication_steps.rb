@@ -12,7 +12,6 @@ end
 
 Given /^I log in with valid credentials$/ do
   visit(Login).log_in_with('user1','P4ssw0rd')
-  #this is page-agnostic which makes sense here
   @current_page.should_contain_text 'Welcome'
 end
 
