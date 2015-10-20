@@ -14,12 +14,8 @@ end
 
 #exercise
 After('@registration') do
-  @current_page.logout
-
   new_user = User.find_by(username: @new_username)
-
-  UserRole.delete_all(user_id: new_user)
-
+  UserRole.delete_all(user: new_user)
   new_user.destroy
 end
 
