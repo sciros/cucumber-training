@@ -6,8 +6,8 @@ class BuyTickets < BasePage
   button(:submit_number_of_tickets, :name => 'reserve-tickets')
 
   def enter_number_of_tickets(number_of_tickets)
-    self.start_purchase
+    start_purchase
     self.number_of_tickets= number_of_tickets
-    self.submit_number_of_tickets
+    submit_number_of_tickets
   end
 end
