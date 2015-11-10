@@ -51,9 +51,10 @@ class UserRole <ActiveRecord::Base
 end
 
 # can also do Movie.all
-sql = 'select * from movie'
-movies_from_db = Movie.find_by_sql(sql)
+movies_from_db = Movie.find_by_sql 'select * from movie'
 puts movies_from_db.length
 movies_from_db.each do |movie|
   puts movie.title
 end
+# or
+# puts Movie.all.map(&:title)
