@@ -1,3 +1,5 @@
+require 'json'
+
 After('@ticketPurchasing') do
   user = User.where(:username => USERNAME).first
   purchases_from_db = Purchase.where(:user_id => user, :number_of_tickets => @number_of_tickets)
@@ -25,5 +27,14 @@ After do |scenario|
     screenshot = "./screenshots/FAILED_#{scenario.name.gsub(' ','_').gsub(/[^0-9A-Za-z_]/, '')}.png"
     @browser.driver.save_screenshot(screenshot)
     embed screenshot, 'image/png'
+  end
+end
+
+After do
+  #record some diagnostic information in the reports
+  begin
+    puts @browser.driver.send('bridge').capabilities.send('capabilities')
+  rescue
+    puts 'Unable to include user agent capabilities.'
   end
 end
