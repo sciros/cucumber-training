@@ -34,8 +34,16 @@ After do
   #record some diagnostic information in the reports
   begin
     capabilities = @browser.driver.send('bridge').capabilities.send('capabilities')
+
+    # for screen size
     dimensions = {:width => @browser.window.size.width, :height => @browser.window.size.height }
     capabilities[:dimensions] = dimensions
+
+    #for mobile emulation
+    if capabilities['mobileEmulationEnabled']
+      capabilities[:deviceEmulated] = @config[ENV['EMULATION']]
+    end
+
     puts capabilities
   rescue
     errors = {:error => 'Unable to include user agent capabilities.'}

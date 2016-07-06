@@ -1,0 +1,12 @@
+testApplicationUrl: http://localhost:8080/movietix
+databaseHost: 127.0.0.1
+iphone: Apple iPhone 6
+ipad: Apple iPad
+phone:
+  portrait:
+    width: 375 #iPhone 6
+    height: 667 #iPhone 6
+tablet:
+  portrait:
+    width: 768 #iPad
+    height: 1024 #iPad
