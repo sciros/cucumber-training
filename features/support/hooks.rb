@@ -33,8 +33,12 @@ end
 After do
   #record some diagnostic information in the reports
   begin
-    puts @browser.driver.send('bridge').capabilities.send('capabilities')
+    capabilities = @browser.driver.send('bridge').capabilities.send('capabilities')
+    dimensions = {:width => @browser.window.size.width, :height => @browser.window.size.height }
+    capabilities[:dimensions] = dimensions
+    puts capabilities
   rescue
-    puts 'Unable to include user agent capabilities.'
+    errors = {:error => 'Unable to include user agent capabilities.'}
+    puts errors # map for type consistency in recording both success and failure
   end
 end

@@ -4,3 +4,4 @@ html: --format html --out=cucumber_results.html --exclude features/support/env_c
 ci: --format html --out=cucumber_results.html --exclude features/support/env.rb --tags ~@wip
 parallel: --format json --out=moo.json # run in command line with parallel_cucumber features/
 json: --format json --out=json_reports/<%= date %>.json
+iphone: --format json --out=json_reports/<%= date %>_iphone.json EMULATION=IPHONE

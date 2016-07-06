@@ -2,7 +2,14 @@ require 'watir-webdriver'
 require 'page-object'
 require 'page-object/page_factory'
 
-browser = Watir::Browser.new :chrome
+caps = {}
+if ENV['EMULATION'] == 'IPHONE'
+  mobile_emulation = {:deviceName => 'Apple iPhone 6'}
+  caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { :mobileEmulation => mobile_emulation })
+  caps[:name] = 'Watir Webdriver'
+end
+caps[:name] = 'Watir Webdriver'
+browser = Watir::Browser.new(:chrome, desired_capabilities: caps)
 
 this_file_location = File.dirname __FILE__
 config_file_path = this_file_location + '/../../config.yml' #directly in project directory
