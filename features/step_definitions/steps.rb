@@ -15,21 +15,13 @@ When /^I press the login button$/ do
 end
 
 Then /^I am logged in$/ do
-  Watir::Wait.until(5) {
+  Watir::Wait.until(timeout: 5) {
     @browser.text.include? 'Welcome'
   }
 end
 
-Then /^I am not logged in$/ do
-  expect(@browser.text).not_to include('Welcome')
-end
-
 Then /^I am on the account page$/ do
-  Watir::Wait.until(5) {
+  Watir::Wait.until(timeout: 5) {
     @browser.text.include? 'This is your account'
   }
-end
-
-When /^I click the logout link$/ do
-  @browser.link(:text => /Logout/).click
 end

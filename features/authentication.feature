@@ -10,6 +10,3 @@ Feature: authentication
     And I press the login button
     Then I am logged in
     And I am on the account page
-    When I click the logout link
-    Then I am not logged in
-    # remove the last two steps since the browser closes anyway
