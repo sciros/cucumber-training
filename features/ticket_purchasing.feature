@@ -4,22 +4,12 @@ Feature: ticket purchasing
   I want to be able to purchase tickets for movie showtimes
   So that I don't have to purchase tickets at the theater
 
-  Scenario: purchasing tickets through movies page while unauthenticated
-    Given I am not logged in
-     When I select a showtime to go to through the movie list
-      And I log in to purchase tickets
-      And I purchase some tickets
-     Then I get a purchase confirmation
-      And I can see my purchase on the account page
+  @manual
+  Scenario: User must log in to successfully purchase tickets to a movie
+    Given I go to the movies page as an unauthenticated user
+    When I select a showtime to attend
+    And I log in
+    And I purchase tickets to that showtime
+    Then I see a purchase confirmation
 
-  @exercise
-  Scenario: purchasing tickets through theaters page while unauthenticated
-    Given I am not logged in
-     When I select a showtime to go to through the theater list
-      And I log in to purchase tickets
-      And I purchase some tickets
-     Then I get a purchase confirmation
-      And I can see my purchase on the account page
 
-  #@exercise
-  #Scenario: purchasing tickets through movies page starting off authenticated

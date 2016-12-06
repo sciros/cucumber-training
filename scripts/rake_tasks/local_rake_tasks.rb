@@ -2,7 +2,7 @@ require 'fileutils'
 
 namespace :local do
   desc 'runs tests as a single process locally'
-  task :single_run => %w(common:arg_extractor common:cores) do |t, args|
+  task :single_run => %w(common:arg_extractor) do |t, args|
     @args_joined = @args_joined.length > 0 ? @args_joined : args.instance_variable_get('@values')[0]
 
     puts "Arguments passed in (as either to Rake following '--' or as arguments to the task): #{@args_joined}"

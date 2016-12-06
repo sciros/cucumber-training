@@ -30,12 +30,3 @@ end
 class User < ActiveRecord::Base
   self.table_name = :user
 end
-
-# can also do Movie.all
-movies_from_db = Movie.find_by_sql 'select * from movie'
-puts movies_from_db.length
-movies_from_db.each do |movie|
-  puts movie.title
-end
-# or
-# puts Movie.all.map(&:title)

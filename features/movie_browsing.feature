@@ -14,13 +14,24 @@ Feature: movie browsing
   Scenario Outline: User can visit the movies page from any page (outline)
     * I can visit the Movies page from the <page_name> page
 
-  Examples:
-    |page_name|
-    |Theaters |
-    |Login    |
+    Examples:
+      | page_name |
+      | Theaters  |
+      | Login     |
 
   @exercise
   Scenario: User can visit the movies page from any page (transform)
     * I can visit the Movies page from any of these pages:
-    |Theaters|
-    |Login   |
+      | Theaters |
+      | Login    |
+
+  @manual
+  Scenario: User views movie details
+    When I view a movie's details
+    Then I see the following:
+     |now playing|
+     |synopsis   |
+     |rating     |
+     |run time   |
+
+

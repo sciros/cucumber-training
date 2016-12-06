@@ -1,2 +1,2 @@
-testApplicationUrl: http://localhost:8080/movietix
-databaseHost: 127.0.0.1
+testApplicationUrl: http://192.168.156.117:8080/movietix
+databaseHost: 192.168.156.117
