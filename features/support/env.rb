@@ -1,4 +1,4 @@
-require 'watir-webdriver'
+require 'watir'
 
 browser = Watir::Browser.new :chrome
 
