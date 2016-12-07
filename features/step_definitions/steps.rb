@@ -47,9 +47,7 @@ Given /^I try to log in with invalid credentials$/ do
 end
 
 Then /^I see an authentication error message$/ do
-  on Login do |login_page|
-    login_page.wait_until(5) do
-      login_page.text.include? 'Sorry'
-    end
+  @current_page.wait_until(5) do
+    @current_page.text.include? 'Sorry'
   end
 end
