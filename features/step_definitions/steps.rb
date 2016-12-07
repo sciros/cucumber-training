@@ -1,11 +1,3 @@
-Given /^I try to log in$/ do
-  visit Login do |login_page|
-    login_page.username = 'user1'
-    login_page.password = 'P4ssw0rd'
-    login_page.login
-  end
-end
-
 When /^I am on the account page$/ do
   on Account do |account_page|
     account_page.wait_until(5, 'Account page did not load') do
@@ -14,21 +6,28 @@ When /^I am on the account page$/ do
   end
 end
 
-When /^I am logged in$/ do
-  on Account do |account_page|
-    account_page.wait_until(5, 'Never saw welcome message') do
-      account_page.text.include? 'Welcome'
-    end
+Given /^I successfully log in with valid credentials$/ do
+  visit Login do |login_page|
+    login_page.username = 'user1'
+    login_page.password = 'P4ssw0rd'
+    login_page.login
   end
+  Watir::Wait.until(timeout: 5, message: 'Never saw welcome message') {
+    @browser.text.include? 'Welcome'
+  }
 end
 
-When /^I try to log out$/ do
-  on(Account).logout
+Given /^I am not logged in$/ do
+  logout_link = @browser.link(text: /Logout/)
+  logout_link.click if logout_link.present?
+
+  expect(@browser.text).not_to include('Welcome')
 end
 
-When /^I am not logged in$/ do
-  #remove watir-webdriver @browser api and replace with page-object api
-  expect(@current_page.text).not_to include('Welcome')
+When /^I am logged in$/ do
+  Watir::Wait.until(timeout: 5) {
+    @browser.text.include? 'Welcome'
+  }
 end
 
 Then /^I am on the login page$/ do
