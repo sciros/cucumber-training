@@ -1,5 +1,4 @@
-class Account
-  include PageObject
+require_relative 'base_page'
 
-  link(:logout, :text => /Logout/)
+class Account < BasePage
 end

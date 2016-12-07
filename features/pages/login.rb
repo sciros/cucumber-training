@@ -1,6 +1,6 @@
-class Login
-  include PageObject
+require_relative 'base_page'
 
+class Login < BasePage
   page_url(BASE_URL + '/login')
 
   text_field(:username, :id => 'username')

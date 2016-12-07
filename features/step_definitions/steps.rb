@@ -1,4 +1,4 @@
-Given /^I log in with valid credentials$/ do
+Given /^I successfully log in with valid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'P4ssw0rd'
@@ -11,13 +11,20 @@ end
 
 Then /^I am on the account page$/ do
   on Account do |account_page|
-    expect(account_page.text).to include('This is your account')
+    account_page.wait_until(5, 'Account page did not load') do
+      account_page.text.include? 'This is your account'
+    end
   end
 end
 
-When /^I can log out$/ do
-  on(Account).logout
-  expect(@current_page.text).not_to include('Welcome')
+Given /^I am not logged in$/ do
+  #can be any page since we are using common elements
+  #don't need to actually be on that page.. so make sure
+  #to NOT verify that you are indeed on that page
+  on BasePage do |page|
+    page.logout if page.logout?
+    expect(page.text).not_to include('Welcome')
+  end
 end
 
 Then /^I am on the login page$/ do
