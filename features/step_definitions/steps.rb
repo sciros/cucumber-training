@@ -1,30 +1,25 @@
-Given /^I try to log in$/ do
+Given /^I successfully log in with valid credentials$/ do
   @browser.goto(BASE_URL + '/login')
   @browser.text_field(:id => 'username').set 'user1'
   @browser.text_field(:id => 'password').set 'P4ssw0rd'
   @browser.button(:name => 'commit').click
 end
 
+Given /^I am not logged in$/ do
+  logout_link = @browser.link(text: /Logout/)
+  logout_link.click if logout_link.present?
+end
 
 When /^I am logged in$/ do
-  Watir::Wait.until(5) {
+  Watir::Wait.until(timeout: 5) {
     @browser.text.include? 'Welcome'
   }
 end
 
-Then /^I am not logged in$/ do
-  expect(@browser.text).not_to include('Welcome')
-end
-
 Then /^I am on the account page$/ do
-  Watir::Wait.until(5) {
-    #good candidate for nested step call of 'I see "This is your account"'
+  Watir::Wait.until(timeout: 5) {
     @browser.text.include? 'This is your account'
   }
-end
-
-When /^I try to log out$/ do
-  @browser.link(:text => /Logout/).click
 end
 
 Then /^I am on the login page$/ do
@@ -39,7 +34,7 @@ Given /^I try to log in with invalid credentials$/ do
 end
 
 Then /^I see an authentication error message$/ do
-  Watir::Wait.until(5) {
-    @browser.text.include? "Sorry"
+  Watir::Wait.until(timeout: 5) {
+    @browser.text.include? 'Sorry'
   }
 end
