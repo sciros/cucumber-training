@@ -32,22 +32,3 @@ Then /^I see an authentication error message$/ do
     @current_page.text.include? 'Sorry'
   end
 end
-
-Given /^I can visit the Movies page from any page$/ do
-  %w(Theaters Login).each do |page_name|
-    visit page_name do |page|
-      page.view_movies
-      on(Movies).movie_list_element.when_present(10) #verify we are on the movies page
-    end
-  end
-end
-
-#exercise
-Given /^I can visit the Theaters page from any page$/ do
-  %w(Movies Login).each do |page_name|
-    visit page_name do |page|
-      page.view_theaters
-      on(Theaters).theater_list_element.when_present(10) #verify we are on the theaters page
-    end
-  end
-end
