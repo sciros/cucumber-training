@@ -1,20 +1,12 @@
-Then /^I am on the [Aa]ccount page$/ do
-  on(Account).should_contain_text 'This is your account'
-end
-
-Then /^I am on the login page$/ do
-  on Login do |login_page|
-    login_page.wait_until(5) {
-      login_page.login?
-    }
-  end
+Then /^I am on the (.+) page$/ do |page|
+  on(page.gsub(' ','_').camelize) # convert easily to a constant (class) name
 end
 
 Given /^I can visit the Movies page from any page$/ do
   %w(Theaters Login).each do |page_name|
     visit page_name do |page|
       page.view_movies
-      on(Movies).movie_list_element.when_present(10) #verify we are on the movies page
+      on(Movies) #verify we are on the movies page
     end
   end
 end
@@ -24,7 +16,7 @@ Given /^I can visit the Theaters page from any page$/ do
   %w(Movies Login).each do |page_name|
     visit page_name do |page|
       page.view_theaters
-      on(Theaters).theater_list_element.when_present(10) #verify we are on the theaters page
+      on(Theaters) #verify we are on the theaters page
     end
   end
 end
