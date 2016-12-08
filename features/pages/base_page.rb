@@ -8,8 +8,8 @@ class BasePage
     end
   end
 
-  link(:logout, :text => /Logout/)
-  link(:view_movies, :text => 'Movies')
-  link(:view_theaters, :text => 'Theaters')
-  link(:view_account, :text => 'My Account')
+  link(:logout, text: /Logout/)
+  link(:view_movies, text: 'Movies')
+  link(:view_theaters, text: 'Theaters')
+  link(:view_account, text: 'My Account')
 end
