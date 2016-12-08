@@ -37,8 +37,8 @@ When(/^I select a showtime to go to through the theater list$/) do
   on(ShowtimeInfo).should_contain_text 'Showtime info'
 end
 
-Given(/^I visit the [Mm]ovies page$/) do
-  visit(Movies).movie_list_element.when_present(5)
+Given(/^I go to the (.+) page$/) do |page|
+  visit(page.gsub(' ','_').camelize)
 end
 
 Then(/^I can see a list of all movies now playing$/) do
