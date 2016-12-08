@@ -22,5 +22,6 @@ Then /^I see an authentication error message$/ do
 end
 
 Given /^I log in to purchase tickets$/ do
-  on(ShowtimeInfo).log_in
+  on(ShowtimeInfo).visit_login_page
+  on(Login).log_in_with('user1','P4ssw0rd')
 end
