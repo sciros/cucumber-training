@@ -1,19 +1,19 @@
 require_relative 'base_page'
 
 class Payment < BasePage
-  link(:start_payment_entry, :text => 'Purchase Tix')
+  link(:start_payment_entry, text: 'Purchase Tix')
 
-  text_field(:name, :id => 'name')
-  text_field(:credit_card_number, :id => 'cc_number')
-  select_list(:month, :id => 'date_month') # or select(...)
-  select_list(:year, :id => 'date_year')
+  text_field(:name, id: 'name')
+  text_field(:credit_card_number, id: 'cc_number')
+  select_list(:month, id: 'date_month') # or select(...)
+  select_list(:year, id: 'date_year')
 
-  text_field(:street_address, :id => 'street_address')
-  text_field(:city, :id => 'city')
-  text_field(:state, :id => 'state')
-  text_field(:zip, :id => 'zip')
+  text_field(:street_address, id: 'street_address')
+  text_field(:city, id: 'city')
+  text_field(:state, id: 'state')
+  text_field(:zip, id: 'zip')
 
-  button(:complete_purchase, :name => 'commit')
+  button(:complete_purchase, name: 'commit')
 
   def enter_payment_information
     start_payment_entry
