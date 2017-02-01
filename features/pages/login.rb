@@ -5,5 +5,5 @@ class Login
 
   text_field(:username, :id => 'username')
   text_field(:password, :id => 'password')
-  button(:login, :name => 'commit')
+  button(:login, :name => 'commit') #consider calling it submit_credentials
 end
