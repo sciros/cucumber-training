@@ -1,5 +1,6 @@
 require 'watir'
 
+# TODO this is not in the other snapshots yet... get it working and then merge it in...
 browser_arguments = { detach:true }
 chrome_options = { 'args' => %w(disable-web-security start-maximized disable-infobars) }
 capabilities = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => chrome_options)
