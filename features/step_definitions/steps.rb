@@ -12,6 +12,7 @@ Given /^I successfully log in with valid credentials$/ do
     login_page.password = 'P4ssw0rd'
     login_page.login
   end
+  #TODO ok to keep this probably since PageObject now coupled only to Watir
   Watir::Wait.until(timeout: 5, message: 'Never saw welcome message') {
     @browser.text.include? 'Welcome'
   }
