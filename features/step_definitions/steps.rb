@@ -5,6 +5,7 @@ Given /^I successfully log in with valid credentials$/ do
       And I enter "P4ssw0rd" into the password
       And I press the login button
   }
+  # TODO move the "I am logged in" step in here as well
 end
 
 Given /^I am not logged in$/ do
