@@ -11,6 +11,7 @@ ActiveRecord::Base.establish_connection(
     :database => 'movietix'
 )
 
+#TODO replace with ApplicationRecord
 class Movie < ActiveRecord::Base
   self.table_name = :movie #ActiveRecord default is plural 'movies'
 end
