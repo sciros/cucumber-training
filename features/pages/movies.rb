@@ -5,7 +5,7 @@ class Movies < BasePage
 
   div(:movie_list, id: 'movies_accordion')
   h3(:first_movie, id: 'movie_heading_1')
-  link(:view_movie_showtimes, id: 'movie_showtimes_1')
+  link(:view_movie_showtimes, id: 'movie_showtimes_1') # dont name it view_first_movie_showtimes or get recursion!
 
   def initialize_page
     movie_list_element.when_present 5
