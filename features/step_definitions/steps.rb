@@ -6,7 +6,7 @@ When /^I am on the account page$/ do
   end
 end
 
-Given /^I successfully log in with valid credentials$/ do
+Given /^I can successfully log in with valid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'P4ssw0rd'
@@ -25,7 +25,23 @@ Given /^I am not logged in$/ do
   expect(@browser.text).not_to include('Welcome')
 end
 
-When /^I am logged in$/ do
+Given /^I go to the login page$/ do
+  @browser.goto(BASE_URL + '/login')
+end
+
+When 'I enter {string} into the username' do |username|
+  @browser.text_field(:id => 'username').set username
+end
+
+When 'I enter {string} into the password' do |password|
+  @browser.text_field(:id => 'password').set password
+end
+
+When /^I press the login button$/ do
+  @browser.button(:name => 'commit').click
+end
+
+Then /^I am logged in$/ do
   Watir::Wait.until(timeout: 5) {
     @browser.text.include? 'Welcome'
   }
