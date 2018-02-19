@@ -7,9 +7,7 @@ Feature: authentication
     Given I am not logged in
 
   Scenario: user goes directly to the login page and authenticates with valid credentials
-     When I successfully log in with valid credentials
-     Then I am on the account page
-    #might want to remove the above step... it only works when this is the first scenario run.
+     * I can successfully log in with valid credentials
 
   Scenario: user tries to authenticate with invalid credentials
      When I try to log in with invalid credentials

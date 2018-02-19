@@ -1,11 +1,11 @@
-Given /^I successfully log in with valid credentials$/ do
-  steps %q{
+Given /^I can successfully log in with valid credentials$/ do
+  steps %q(
     Given I go to the login page
      When I enter "user1" into the username
       And I enter "P4ssw0rd" into the password
       And I press the login button
-  }
-  # TODO move the "I am logged in" step in here as well
+     Then I am logged in
+  )
 end
 
 Given /^I am not logged in$/ do
@@ -46,12 +46,12 @@ Then /^I am on the login page$/ do
 end
 
 Given /^I try to log in with invalid credentials$/ do
-  steps %q{
+  steps %q(
    Given I go to the login page
     When I enter "user1" into the username
     And I enter "bad password" into the password
     And I press the login button
-  }
+  )
 end
 
 Then /^I see an authentication error message$/ do
