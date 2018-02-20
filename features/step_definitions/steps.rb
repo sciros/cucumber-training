@@ -1,11 +1,3 @@
-When /^I am on the account page$/ do
-  on Account do |account_page|
-    account_page.wait_until(5, 'Account page did not load') do
-      account_page.text.include? 'This is your account'
-    end
-  end
-end
-
 Given /^I can successfully log in with valid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
