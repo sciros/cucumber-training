@@ -9,7 +9,8 @@ class Login < BasePage
 
   def initialize_page
     wait_until(5) {
-      submit_credentials?
+      username?
     }
   end
 end
+
