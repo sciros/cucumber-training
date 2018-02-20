@@ -3,7 +3,7 @@ Feature: movie browsing
   I want to be able to browse through the movies currently playing
   So that I know what movies I am able to go see
 
-  Background:
+  Background: movies is not a secure page
     Given I am not authenticated
 
   Scenario: User can visit the movies page from any page
