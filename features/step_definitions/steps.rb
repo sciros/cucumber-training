@@ -2,7 +2,7 @@ Then /^I am on the (.+) page$/ do |page|
   on(page.gsub(' ','_').camelize) # convert easily to a constant (class) name
 end
 
-Given /^I successfully log in with valid credentials$/ do
+Given /^I can successfully log in with valid credentials$/ do
   visit(Login).log_in_with 'user1', 'P4ssw0rd'
   @current_page.should_contain_text 'Welcome'
 end
@@ -12,7 +12,7 @@ Given /^I am not (?:logged in|authenticated)$/ do
   #don't need to actually be on that page.. so make sure
   #to NOT verify that you are indeed on that page
   on BasePage do |page|
-    page.logout if page.logout?
+    page.log_out if page.log_out?
     expect(page.text).not_to include('Welcome')
   end
 end
@@ -27,7 +27,7 @@ end
 
 
 Given /^I can visit the Movies page from any page$/ do
-  %w(Theaters Login).each do |page_name|
+  [Login, Theaters].each do |page_name|
     visit page_name do |page|
       page.view_movies
       on(Movies) #verify we are on the movies page
