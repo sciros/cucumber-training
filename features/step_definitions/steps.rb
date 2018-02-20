@@ -15,7 +15,7 @@ Given /^I am not logged in$/ do
   #don't need to actually be on that page.. so make sure
   #to NOT verify that you are indeed on that page
   on BasePage do |page|
-    page.logout if page.logout?
+    page.log_out if page.log_out?
     expect(page.text).not_to include('Welcome')
   end
 end
