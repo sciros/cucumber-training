@@ -1,5 +1,5 @@
 class BasePage
   include PageObject
 
-  link(:logout, text: /Logout/)
+  link(:log_out, text: /Logout/)
 end

@@ -1,16 +1,12 @@
-Given /^I successfully log in with valid credentials$/ do
+Given /^I can successfully log in with valid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'P4ssw0rd'
-    login_page.login
+    login_page.submit_credentials
+    login_page.wait_until(5, 'Welcome message never appeared') do
+      login_page.text.include? 'Welcome'
+    end
   end
-  @current_page.wait_until(5, 'Never saw welcome message') do
-    @current_page.text.include? 'Welcome'
-  end
-end
-
-Then /^I am on the account page$/ do
-  on(Account)
 end
 
 Given /^I am not logged in$/ do
@@ -18,7 +14,7 @@ Given /^I am not logged in$/ do
   #don't need to actually be on that page.. so make sure
   #to NOT verify that you are indeed on that page
   on BasePage do |page|
-    page.logout if page.logout?
+    page.log_out if page.log_out?
     expect(page.text).not_to include('Welcome')
   end
 end
@@ -27,7 +23,7 @@ Given /^I try to log in with invalid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'bad password'
-    login_page.login
+    login_page.submit_credentials
   end
 end
 
@@ -36,6 +32,7 @@ Then /^I am on the login page$/ do
 end
 
 Then /^I see an authentication error message$/ do
+  #you don't need to re-instantiate a page every time
   @current_page.wait_until(5) do
     @current_page.text.include? 'Sorry'
   end
