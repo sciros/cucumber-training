@@ -1,18 +1,19 @@
-Given /^I successfully log in with valid credentials$/ do
-  visit Login do |login_page|
-    login_page.username = 'user1'
-    login_page.password = 'P4ssw0rd'
-    login_page.login
-  end
-  @current_page.wait_until(5, 'Never saw welcome message') do
-    @current_page.text.include? 'Welcome'
-  end
-end
-
-Then /^I am on the account page$/ do
+When /^I am on the account page$/ do
   on Account do |account_page|
     account_page.wait_until(5, 'Account page did not load') do
       account_page.text.include? 'This is your account'
+    end
+  end
+end
+
+Given /^I can successfully log in with valid credentials$/ do
+  visit Login do |login_page|
+    login_page.username = 'user1'
+    login_page.password = 'P4ssw0rd'
+    login_page.submit_credentials
+
+    login_page.wait_until(5, 'Welcome message never appeared') do
+      login_page.text.include? 'Welcome'
     end
   end
 end
@@ -30,7 +31,7 @@ end
 Then /^I am on the login page$/ do
   on Login do |login_page|
     login_page.wait_until(5) do
-      login_page.login? #checks element's existence
+      login_page.submit_credentials? #checks element's existence
     end
   end
 end
@@ -39,12 +40,13 @@ Given /^I try to log in with invalid credentials$/ do
   visit Login do |login_page|
     login_page.username = 'user1'
     login_page.password = 'bad password'
-    login_page.login
+    login_page.submit_credentials
   end
 end
 
 Then /^I see an authentication error message$/ do
+  #you don't need to re-instantiate a page every time
   @current_page.wait_until(5) do
-      @current_page.text.include? 'Sorry'
+    @current_page.text.include? 'Sorry'
   end
 end
