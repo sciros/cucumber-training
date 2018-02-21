@@ -1,9 +1,9 @@
 Then /^I am on the (.+) page$/ do |page|
-  on(page.gsub(' ','_').camelize) # convert easily to a constant (class) name
+  on(page.gsub(' ', '_').camelize) # convert easily to a constant (class) name
 end
 
 Given /^I can visit the Movies page from any page$/ do
-  %w(Theaters Login).each do |page_name|
+  [Login, Theaters].each do |page_name|
     visit page_name do |page|
       page.view_movies
       on(Movies) #verify we are on the movies page
