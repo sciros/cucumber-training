@@ -1,5 +1,6 @@
 When(/^I purchase some tickets$/) do
-  on(BuyTickets).enter_number_of_tickets(3)
+  on(BuyTickets).start_purchase
+  on(TicketEntry).enter_number_of_tickets(3)
   on(Payment).enter_payment_information
 end
 
