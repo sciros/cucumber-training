@@ -25,3 +25,7 @@ Given /^I log in to purchase tickets$/ do
   on(ShowtimeInfo).visit_login_page
   on(Login).log_in_with('user1','P4ssw0rd')
 end
+
+Given(/^I am logged in$/) do
+  visit(Login).log_in_with 'user1', 'P4ssword' unless authenticated?
+end
