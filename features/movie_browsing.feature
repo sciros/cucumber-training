@@ -7,8 +7,8 @@ Feature: movie browsing
     Given I am not authenticated
 
   Scenario: User sees a list of movies on the movies page
-    Given I go to the Movies page
-    Then I can see a list of all movies now playing
+    When I go to the Movies page
+    Then I see a list of all movies now playing
 
   Scenario: User can visit the movies page from any page
     * I can visit the Movies page from any page

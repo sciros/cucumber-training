@@ -41,7 +41,7 @@ Given(/^I go to the (.+) page$/) do |page|
   visit(page.gsub(' ','_').camelize)
 end
 
-Then(/^I can see a list of all movies now playing$/) do
+Then(/^I see a list of all movies now playing$/) do
   on Movies do |movies_page|
     movie_listing = movies_page.movie_list #get text from div
     Movie.all.each do |movie|
