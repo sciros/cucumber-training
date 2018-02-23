@@ -1,9 +1,9 @@
 Then /^I am on the (.+) page$/ do |page|
-  on(page.gsub(' ','_').camelize) # convert easily to a constant (class) name
+  on(page.gsub(' ', '_').camelize) # convert easily to a constant (class) name
 end
 
 Given /^I can visit the Movies page from any page$/ do
-  %w(Theaters Login).each do |page_name|
+  [Login, Theaters].each do |page_name|
     visit page_name do |page|
       page.view_movies
       on(Movies) #verify we are on the movies page
@@ -17,6 +17,22 @@ Given /^I can visit the Theaters page from any page$/ do
     visit page_name do |page|
       page.view_theaters
       on(Theaters) #verify we are on the theaters page
+    end
+  end
+end
+
+When(/^I can visit the movies page from the (.*) page$/) do |page_name|
+  visit page_name do |page|
+    page.view_movies
+    on(Movies)
+  end
+end
+
+When(/^I can visit the movies page from these pages:$/) do |pages|
+  pages.raw.flatten.each do |page_name|
+    visit page_name do |page|
+      page.view_movies
+      on(Movies)
     end
   end
 end
@@ -41,7 +57,7 @@ Given(/^I go to the (.+) page$/) do |page|
   visit(page.gsub(' ','_').camelize)
 end
 
-Then(/^I can see a list of all movies now playing$/) do
+Then(/^I see a list of all movies now playing$/) do
   on Movies do |movies_page|
     movie_listing = movies_page.movie_list #get text from div
     Movie.all.each do |movie|
