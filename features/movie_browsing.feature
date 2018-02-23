@@ -3,6 +3,9 @@ Feature: movie browsing
   I want to be able to browse through the movies currently playing
   So that I know what movies I am able to go see
 
+  Background: movies is not a secure page
+    Given I am not authenticated
+
   Scenario: User sees a list of movies on the movies page
     Given I go to the Movies page
     Then I can see a list of all movies now playing

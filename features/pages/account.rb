@@ -1,9 +1,9 @@
 require_relative 'base_page'
 
 class Account < BasePage
+  direct_url(BASE_URL + '/account')
+
   def initialize_page
-    self.wait_until(5, 'Account page did not load') do
-      self.text.include? 'This is your account'
-    end
+    should_contain_text 'This is your account'
   end
 end
