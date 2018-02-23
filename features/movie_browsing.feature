@@ -12,3 +12,18 @@ Feature: movie browsing
 
   Scenario: User can visit the movies page from any page
     * I can visit the Movies page from any page
+
+  @exercise # outline
+  Scenario Outline: visiting movies from any page (outline)
+    * I can visit the movies page from the <page_name> page
+
+    Examples:
+      | page_name |
+      | Theaters  |
+      | Login     |
+
+  @exercise # with table
+  Scenario: visiting movies from any page (table)
+    * I can visit the movies page from these pages:
+      | Theaters |
+      | Login    |
