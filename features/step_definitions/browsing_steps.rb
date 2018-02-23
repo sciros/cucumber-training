@@ -21,6 +21,22 @@ Given /^I can visit the Theaters page from any page$/ do
   end
 end
 
+When(/^I can visit the movies page from the (.*) page$/) do |page_name|
+  visit page_name do |page|
+    page.view_movies
+    on(Movies)
+  end
+end
+
+When(/^I can visit the movies page from these pages:$/) do |pages|
+  pages.raw.flatten.each do |page_name|
+    visit page_name do |page|
+      page.view_movies
+      on(Movies)
+    end
+  end
+end
+
 When(/^I select a showtime to go to through the movie list$/) do
   # view first showtime on movies page
   # select first showtime on the movie showtimes page
