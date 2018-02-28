@@ -11,25 +11,25 @@ ActiveRecord::Base.establish_connection(
     database: 'movietix'
 )
 
-class Movie < ActiveRecord::Base
-  self.table_name = :movie #ActiveRecord default is plural 'movies'
-end
-
-class Showtime < ActiveRecord::Base
-  self.table_name = :showtime
-end
-
-class Theater < ActiveRecord::Base
-  self.table_name = :theater
-end
-
-class Purchase < ActiveRecord::Base
-  self.table_name = :purchase
-end
-
-class User < ActiveRecord::Base
-  self.table_name = :user
-end
+# class Movie < ActiveRecord::Base
+#   self.table_name = :movie #ActiveRecord default is plural 'movies'
+# end
+#
+# class Showtime < ActiveRecord::Base
+#   self.table_name = :showtime
+# end
+#
+# class Theater < ActiveRecord::Base
+#   self.table_name = :theater
+# end
+#
+# class Purchase < ActiveRecord::Base
+#   self.table_name = :purchase
+# end
+#
+# class User < ActiveRecord::Base
+#   self.table_name = :user
+# end
 
 # can also do Movie.all
 movies_from_db = Movie.find_by_sql 'select * from movie'

@@ -1,5 +1,5 @@
 When(/^I purchase some tickets$/) do
-  @number_of_tickets = 3
+  @number_of_tickets = 1
   on(BuyTickets).start_purchase
   on(TicketEntry).enter_number_of_tickets(@number_of_tickets)
   on(Payment).enter_payment_information
