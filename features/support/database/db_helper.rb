@@ -31,11 +31,11 @@ ActiveRecord::Base.establish_connection(
 #   self.table_name = :user
 # end
 
-# can also do Movie.all
-movies_from_db = Movie.find_by_sql 'select * from movie'
-puts movies_from_db.length
-movies_from_db.each do |movie|
-  puts movie.title
-end
+# can also do Movie.find_by_sql 'select * from movie'
+# movies_from_db = Movie.all
+# puts movies_from_db.length
+# movies_from_db.each do |movie|
+#   puts movie.title
+# end
 # or
 # puts Movie.all.map(&:title)
