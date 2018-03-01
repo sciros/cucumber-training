@@ -34,6 +34,8 @@ module CustomWorld
   end
 end
 
+World(CustomWorld)
+
 Before do
   @browser = browser
 end
