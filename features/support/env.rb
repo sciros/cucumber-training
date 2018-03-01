@@ -35,6 +35,8 @@ module CustomWorld
   end
 end
 
+World(CustomWorld)
+
 Before do
   @username = username
   @browser = browser
