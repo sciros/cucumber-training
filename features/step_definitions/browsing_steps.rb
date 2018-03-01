@@ -43,7 +43,12 @@ When(/^I select a showtime to go to through the movie list$/) do
   # verify that we are on the showtime info page
   visit(Movies).view_first_movie_showtimes
   on(MovieShowtimes).select_first_showtime
-  on(ShowtimeInfo).should_contain_text 'Showtime info'
+
+  if authenticated?
+    on(BuyTickets)
+  else
+    on(ShowtimeInfo)
+  end
 end
 
 #exercise

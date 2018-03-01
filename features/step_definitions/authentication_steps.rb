@@ -27,5 +27,5 @@ Given /^I log in to purchase tickets$/ do
 end
 
 Given(/^I am logged in$/) do
-  visit(Login).log_in_with 'user1', 'P4ssword' unless authenticated?
+  visit(Login).log_in_with 'user1', 'P4ssw0rd' unless authenticated?
 end
