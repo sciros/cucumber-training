@@ -1,3 +1,3 @@
-default: --format pretty --exclude features/support/env_ci.rb --tags ~@wip
-html: --format html --out=cucumber_results.html --exclude features/support/env_ci.rb --tags ~@wip
-ci: --format html --out=cucumber_results.html --exclude features/support/env.rb --tags ~@wip
+default: --format pretty --tags 'not @wip'
+html: --format html --out=cucumber_results.html --tags 'not @wip'
+ci: --format html --out=cucumber_results.html --tags 'not @wip'

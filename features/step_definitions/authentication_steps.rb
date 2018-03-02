@@ -1,4 +1,4 @@
-Given /^I successfully log in with valid credentials$/ do
+Given /^I can successfully log in with valid credentials$/ do
   visit(Login).log_in_with @username, 'P4ssw0rd'
   @current_page.should_contain_text 'Welcome'
 end
@@ -8,7 +8,7 @@ Given /^I am not (?:logged in|authenticated)$/ do
   #don't need to actually be on that page.. so make sure
   #to NOT verify that you are indeed on that page
   on BasePage do |page|
-    page.logout if page.logout?
+    page.log_out if page.log_out?
     expect(page.text).not_to include('Welcome')
   end
 end
@@ -24,4 +24,8 @@ end
 Given /^I log in to purchase tickets$/ do
   on(ShowtimeInfo).visit_login_page
   on(Login).log_in_with(@username,'P4ssw0rd')
+end
+
+Given(/^I am logged in$/) do
+  visit(Login).log_in_with 'user1', 'P4ssw0rd' unless authenticated?
 end
