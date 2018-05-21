@@ -1,20 +1,22 @@
 require_relative 'base_page'
 
 class Theaters < BasePage
-  page_url(BASE_URL + '/theater/listAll')
+  direct_url(BASE_URL + '/theater/listAll')
 
-  div(:theater_list, :id => 'theaters_accordion')
+  div(:theater_list, id: 'theaters_accordion')
 
   #exercise
-  h3(:first_theater, :id => 'theater_heading_1')
-  link(:view_theater_showtimes, :id => 'theater_showtimes_1')
+  h3(:first_theater, id: 'theater_heading_1')
+  link(:view_theater_showtimes, id: 'theater_showtimes_1')
+
+  def initialize_page
+    theater_list_element.when_present 5
+  end
 
   #exercise
   def view_first_theater_showtimes
     self.first_theater_element.click
-    # this element does not appear right away.
-    # doing a self.view_theater_showtimes_element will result in
-    # an ElementNotVisibleError
-    self.view_theater_showtimes_element.when_visible(10).click
+    # this element does not appear right away.. but Watir 6+ seems to be flexible around that
+    self.view_theater_showtimes
   end
 end
